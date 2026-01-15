@@ -27,11 +27,11 @@ public partial class Funcionario
 
     public uint IdRestaurante { get; set; }
 
-    public uint IdTipoFuncionario { get; set; }
+    public uint IdFuncaoFuncionario { get; set; }
+
+    public virtual Funcaofuncionario IdFuncaoFuncionarioNavigation { get; set; } = null!;
 
     public virtual Restaurante IdRestauranteNavigation { get; set; } = null!;
-
-    public virtual Tipofuncionario IdTipoFuncionarioNavigation { get; set; } = null!;
 
     public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 }

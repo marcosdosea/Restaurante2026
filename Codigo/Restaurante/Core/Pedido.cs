@@ -22,8 +22,6 @@ public partial class Pedido
     /// </summary>
     public string Status { get; set; } = null!;
 
-    public string? Pedidocol { get; set; }
-
     public virtual Atendimento IdAtendimentoNavigation { get; set; } = null!;
 
     public virtual Funcionario IdGarcomNavigation { get; set; } = null!;

@@ -19,6 +19,8 @@ public partial class RestauranteContext : DbContext
 
     public virtual DbSet<Formapagamento> Formapagamentos { get; set; }
 
+    public virtual DbSet<Funcaofuncionario> Funcaofuncionarios { get; set; }
+
     public virtual DbSet<Funcionario> Funcionarios { get; set; }
 
     public virtual DbSet<Grupocardapio> Grupocardapios { get; set; }
@@ -34,8 +36,6 @@ public partial class RestauranteContext : DbContext
     public virtual DbSet<Pedidoitemcardapio> Pedidoitemcardapios { get; set; }
 
     public virtual DbSet<Restaurante> Restaurantes { get; set; }
-
-    public virtual DbSet<Tipofuncionario> Tipofuncionarios { get; set; }
 
     public virtual DbSet<Tiporestaurante> Tiporestaurantes { get; set; }
 
@@ -97,13 +97,25 @@ public partial class RestauranteContext : DbContext
                 .HasColumnName("nome");
         });
 
+        modelBuilder.Entity<Funcaofuncionario>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("funcaofuncionario");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Nome)
+                .HasMaxLength(50)
+                .HasColumnName("nome");
+        });
+
         modelBuilder.Entity<Funcionario>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("funcionario");
 
-            entity.HasIndex(e => e.IdTipoFuncionario, "fk_Funcionario_TipoFuncionario1_idx");
+            entity.HasIndex(e => e.IdFuncaoFuncionario, "fk_Funcionario_TipoFuncionario1_idx");
 
             entity.HasIndex(e => e.IdRestaurante, "fk_garcom_restaurante1_idx");
 
@@ -123,8 +135,8 @@ public partial class RestauranteContext : DbContext
             entity.Property(e => e.Estado)
                 .HasMaxLength(2)
                 .HasColumnName("estado");
+            entity.Property(e => e.IdFuncaoFuncionario).HasColumnName("idFuncaoFuncionario");
             entity.Property(e => e.IdRestaurante).HasColumnName("idRestaurante");
-            entity.Property(e => e.IdTipoFuncionario).HasColumnName("idTipoFuncionario");
             entity.Property(e => e.Nome)
                 .HasMaxLength(45)
                 .HasColumnName("nome");
@@ -138,15 +150,15 @@ public partial class RestauranteContext : DbContext
                 .HasMaxLength(11)
                 .HasColumnName("telefone2");
 
+            entity.HasOne(d => d.IdFuncaoFuncionarioNavigation).WithMany(p => p.Funcionarios)
+                .HasForeignKey(d => d.IdFuncaoFuncionario)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Funcionario_TipoFuncionario1");
+
             entity.HasOne(d => d.IdRestauranteNavigation).WithMany(p => p.Funcionarios)
                 .HasForeignKey(d => d.IdRestaurante)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("fk_garcom_restaurante1");
-
-            entity.HasOne(d => d.IdTipoFuncionarioNavigation).WithMany(p => p.Funcionarios)
-                .HasForeignKey(d => d.IdTipoFuncionario)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_Funcionario_TipoFuncionario1");
         });
 
         modelBuilder.Entity<Grupocardapio>(entity =>
@@ -178,10 +190,6 @@ public partial class RestauranteContext : DbContext
             entity.Property(e => e.Detalhes)
                 .HasMaxLength(500)
                 .HasColumnName("detalhes");
-            entity.Property(e => e.Disponivel)
-                .HasMaxLength(45)
-                .HasDefaultValueSql("'1'")
-                .HasColumnName("disponivel");
             entity.Property(e => e.IdGrupoCardapio).HasColumnName("idGrupoCardapio");
             entity.Property(e => e.IdRestaurante).HasColumnName("idRestaurante");
             entity.Property(e => e.Nome)
@@ -272,7 +280,6 @@ public partial class RestauranteContext : DbContext
                 .HasColumnName("dataHoraSolicitacao");
             entity.Property(e => e.IdAtendimento).HasColumnName("idAtendimento");
             entity.Property(e => e.IdGarcom).HasColumnName("idGarcom");
-            entity.Property(e => e.Pedidocol).HasMaxLength(45);
             entity.Property(e => e.Status)
                 .HasComment("S - SOLICITADO\nC - CANCELADO\nA - ATENDIDO")
                 .HasColumnType("enum('S','C','A')")
@@ -358,18 +365,6 @@ public partial class RestauranteContext : DbContext
                 .HasForeignKey(d => d.IdTipoRestaurante)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_restaurante_TipoRestaurante1");
-        });
-
-        modelBuilder.Entity<Tipofuncionario>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("tipofuncionario");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Nome)
-                .HasMaxLength(50)
-                .HasColumnName("nome");
         });
 
         modelBuilder.Entity<Tiporestaurante>(entity =>

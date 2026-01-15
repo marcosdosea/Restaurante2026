@@ -15,8 +15,6 @@ public partial class Itemcardapio
 
     public sbyte Ativo { get; set; }
 
-    public string Disponivel { get; set; } = null!;
-
     public uint IdRestaurante { get; set; }
 
     public uint IdGrupoCardapio { get; set; }

@@ -1,3 +1,6 @@
+using Core;
+using Microsoft.EntityFrameworkCore;
+
 namespace RestauranteWeb
 {
     public class Program
@@ -8,6 +11,15 @@ namespace RestauranteWeb
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionString = builder.Configuration.GetConnectionString("RestauranteConnection");
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException("Conexão com o banco de dados não foi configurada corretamente.");
+            }
+            builder.Services.AddDbContext<RestauranteContext>(
+                options => options.UseMySQL(connectionString));
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
 
