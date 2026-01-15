@@ -51,9 +51,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `restaurante`.`TipoFuncionario`
+-- Table `restaurante`.`FuncaoFuncionario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `restaurante`.`TipoFuncionario` (
+CREATE TABLE IF NOT EXISTS `restaurante`.`FuncaoFuncionario` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`))
@@ -75,18 +75,18 @@ CREATE TABLE IF NOT EXISTS `restaurante`.`Funcionario` (
   `telefone1` VARCHAR(11) NULL,
   `telefone2` VARCHAR(11) NULL,
   `idRestaurante` INT UNSIGNED NOT NULL,
-  `idTipoFuncionario` INT UNSIGNED NOT NULL,
+  `idFuncaoFuncionario` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_garcom_restaurante1_idx` (`idRestaurante` ASC) VISIBLE,
-  INDEX `fk_Funcionario_TipoFuncionario1_idx` (`idTipoFuncionario` ASC) VISIBLE,
+  INDEX `fk_Funcionario_TipoFuncionario1_idx` (`idFuncaoFuncionario` ASC) VISIBLE,
   CONSTRAINT `fk_garcom_restaurante1`
     FOREIGN KEY (`idRestaurante`)
     REFERENCES `restaurante`.`restaurante` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `fk_Funcionario_TipoFuncionario1`
-    FOREIGN KEY (`idTipoFuncionario`)
-    REFERENCES `restaurante`.`TipoFuncionario` (`id`)
+    FOREIGN KEY (`idFuncaoFuncionario`)
+    REFERENCES `restaurante`.`FuncaoFuncionario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -128,7 +128,6 @@ CREATE TABLE IF NOT EXISTS `restaurante`.`itemcardapio` (
   `preco` DECIMAL(10,2) NULL,
   `detalhes` VARCHAR(500) NULL,
   `ativo` TINYINT NOT NULL DEFAULT 1,
-  `disponivel` VARCHAR(45) NOT NULL DEFAULT '1',
   `idRestaurante` INT UNSIGNED NOT NULL,
   `idGrupoCardapio` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
@@ -180,7 +179,6 @@ CREATE TABLE IF NOT EXISTS `restaurante`.`pedido` (
   `idAtendimento` INT UNSIGNED NOT NULL,
   `idGarcom` INT UNSIGNED NOT NULL,
   `status` ENUM('S', 'C', 'A') NOT NULL COMMENT 'S - SOLICITADO\nC - CANCELADO\nA - ATENDIDO',
-  `Pedidocol` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Pedido_Atendimento1_idx` (`idAtendimento` ASC) VISIBLE,
   INDEX `fk_Pedido_garcom1_idx` (`idGarcom` ASC) VISIBLE,
