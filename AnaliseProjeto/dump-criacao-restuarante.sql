@@ -222,7 +222,7 @@ ENGINE = InnoDB;
 -- Table `restaurante`.`FormaPagamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `restaurante`.`FormaPagamento` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
