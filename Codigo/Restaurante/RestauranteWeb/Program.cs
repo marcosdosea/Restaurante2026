@@ -1,4 +1,6 @@
 using Core;
+using Core.Service;
+using Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace RestauranteWeb
@@ -19,6 +21,9 @@ namespace RestauranteWeb
             }
             builder.Services.AddDbContext<RestauranteContext>(
                 options => options.UseMySQL(connectionString));
+
+            builder.Services.AddTransient<IRestauranteService, RestauranteService>();
+
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var app = builder.Build();
