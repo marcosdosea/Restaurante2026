@@ -1,5 +1,7 @@
 using Core;
+using Core.Service;
 using Microsoft.EntityFrameworkCore;
+using Service;
 
 namespace RestauranteWeb
 {
@@ -20,6 +22,8 @@ namespace RestauranteWeb
             builder.Services.AddDbContext<RestauranteContext>(
                 options => options.UseMySQL(connectionString));
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
 
             var app = builder.Build();
 
