@@ -7,15 +7,15 @@ namespace RestauranteWeb.Models
     public class RestauranteViewModel
     {
         [Display(Name = "Código")]
-        [Key]
         [Required(ErrorMessage = "Codigo obrigatorio")]
+        [Key]
         public uint Id { get; set; }
 
         [Display(Name = "Código Tipo Restaurante")]
         [Required(ErrorMessage = "Codigo do tipo de restaurante obrigatorio")]
         public uint IdTipoRestaurante { get; set; }
 
-        [CNPJ]
+
         [Required(ErrorMessage = "campo obrigatorio")]
         public string Cnpj { get; set; } = null!;
 

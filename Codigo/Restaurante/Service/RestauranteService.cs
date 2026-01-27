@@ -1,17 +1,16 @@
 ﻿using Core;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
-using ZstdSharp.Unsafe;
 
 namespace Service
 {
     public class RestauranteService : IRestauranteService
     {
-        private readonly RestauranteContext _context;
+        private readonly RestauranteContext context;
 
         public RestauranteService(RestauranteContext context)
         {   
-            _context = context;
+            this.context = context;
         }
 
         /// <summary>
@@ -21,8 +20,8 @@ namespace Service
         /// <returns></returns>
         public uint Create(Restaurante restaurante)
         {
-            _context.Add(restaurante);
-            _context.SaveChanges();
+            context.Restaurantes.Add(restaurante);
+            context.SaveChanges();
             return restaurante.Id;
         }
 
@@ -32,11 +31,11 @@ namespace Service
         /// <param name="id"></param>
         public void Delete(uint id)
         {
-            var _restaurante = _context.Restaurantes.Find(id);
-            if (_restaurante != null)
+            var restaurante = context.Restaurantes.Find(id);
+            if (restaurante != null)
             {
-                _context.Restaurantes.Remove(_restaurante);
-                _context.SaveChanges();
+                context.Restaurantes.Remove(restaurante);
+                context.SaveChanges();
             }
             
         }
@@ -48,12 +47,8 @@ namespace Service
         /// <exception cref="ServiceException"></exception>
         public void Edit(Restaurante restaurante)
         {
-            if (restaurante != null)
-            {
-                _context.Update(restaurante);
-                _context.SaveChanges();
-            }
-            
+            context.Update(restaurante);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -63,7 +58,7 @@ namespace Service
         /// <returns></returns>
         public Restaurante? Get(uint id)
         {
-            return _context.Restaurantes.Find(id);
+            return context.Restaurantes.Find(id);
         }
 
         /// <summary>
@@ -72,7 +67,7 @@ namespace Service
         /// <returns></returns>
         public IEnumerable<Restaurante> GetAll()
         {
-            return _context.Restaurantes.AsNoTracking();
+            return context.Restaurantes.AsNoTracking();
         }
     }
 
