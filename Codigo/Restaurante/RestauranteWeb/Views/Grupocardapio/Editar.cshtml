@@ -1,16 +1,14 @@
 ﻿@model RestauranteWeb.Models.GrupocardapioViewModel
 
 @{
-    ViewData["Title"] = "Editar Grupo";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Editar</h1>
-
-<h4>Grupo do Cardápio</h4>
+<h1>Editar Grupo</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Editar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group mb-3">
@@ -25,9 +23,3 @@
         </form>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
