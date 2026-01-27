@@ -24,6 +24,7 @@ namespace RestauranteWeb
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
+            builder.Services.AddTransient<IGrupocardapioService, GrupocardapioService>();
 
             var app = builder.Build();
 
