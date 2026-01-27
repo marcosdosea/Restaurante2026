@@ -2,6 +2,7 @@ using Core;
 using Core.Service;
 using Service;
 using Microsoft.EntityFrameworkCore;
+using Service;
 
 namespace RestauranteWeb
 {
@@ -17,7 +18,7 @@ namespace RestauranteWeb
             var connectionString = builder.Configuration.GetConnectionString("RestauranteConnection");
             if (string.IsNullOrEmpty(connectionString))
             {
-                throw new InvalidOperationException("Conex„o com o banco de dados n„o foi configurada corretamente.");
+                throw new InvalidOperationException("Conex√£o com o banco de dados n√£o foi configurada corretamente.");
             }
             builder.Services.AddDbContext<RestauranteContext>(
                 options => options.UseMySQL(connectionString));
@@ -25,6 +26,9 @@ namespace RestauranteWeb
             builder.Services.AddTransient<IRestauranteService, RestauranteService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
+            builder.Services.AddTransient<IGrupocardapioService, GrupocardapioService>();
 
             var app = builder.Build();
 
