@@ -20,3 +20,62 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.table td,
+.table th {
+    white-space: nowrap;
+}
+
+/*estilo global para botoes de criar */
+a[href$="/Create"] {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #198754;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+}
+a[href$="/Create"]:hover {
+    background-color: #157347;
+}
+
+/* estilo base dos botoes na tabela inicial*/
+a[href*="/Edit"] {
+    background-color: #0d6efd;
+}
+
+table a[href*="/Details"] {
+    background-color: #0dcaf0;
+}
+
+table a[href*="/Delete"] {
+    background-color: #dc3545;
+}
+
+/* base comum */
+a[href*="/Edit"],
+table a[href*="/Details"],
+table a[href*="/Delete"] {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 4px;
+}
+
+/* hover */
+a[href*="/Edit"]:hover {
+    background-color: #0b5ed7;
+}
+
+table a[href*="/Details"]:hover {
+    background-color: #2bb9d5;
+}
+
+table a[href*="/Delete"]:hover {
+    background-color: #bb2d3b;
+}
+
