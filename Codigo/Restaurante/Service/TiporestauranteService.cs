@@ -53,13 +53,10 @@ namespace Service
        
 
         public void Edit(Tiporestaurante tipoRestaurante)
-        {
-            var tiporestaurante = _context.Tiporestaurantes.Find(tipoRestaurante.Id);
-            if (tiporestaurante != null)
-            {
-                _context.Tiporestaurantes.Update(tipoRestaurante);
-                _context.SaveChanges();
-            }
+        { 
+            _context.Tiporestaurantes.Update(tipoRestaurante);
+            _context.SaveChanges();
+            
         }
 
         /// <summary>

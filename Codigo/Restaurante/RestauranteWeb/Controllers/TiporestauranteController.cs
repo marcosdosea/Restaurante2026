@@ -26,9 +26,9 @@ namespace RestauranteWeb.Controllers
 
 
         // GET: TiporestauranteController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(uint id)
         {
-            var tipoRestaurante = _tiporestauranteService.Get((uint)id);
+            var tipoRestaurante = _tiporestauranteService.Get(id);
             var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
@@ -53,9 +53,9 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: TiporestauranteController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(uint id)
         {
-            var tipoRestaurante = _tiporestauranteService.Get((uint)id);
+            var tipoRestaurante = _tiporestauranteService.Get(id);
             var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
@@ -75,9 +75,9 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: TiporestauranteController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(uint id)
         {
-            var tipoRestaurante = _tiporestauranteService.Get((uint)id);
+            var tipoRestaurante = _tiporestauranteService.Get(id);
             var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
@@ -87,13 +87,10 @@ namespace RestauranteWeb.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id,TiporestauranteViewModel tiporestauranteViewModel)
+        public ActionResult Delete(uint id,TiporestauranteViewModel tiporestauranteViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
-                _tiporestauranteService.Delete((uint)id);
-            }
+            var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
+            _tiporestauranteService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
