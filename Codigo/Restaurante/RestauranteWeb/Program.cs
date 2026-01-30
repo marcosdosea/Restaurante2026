@@ -2,7 +2,6 @@ using Core;
 using Core.Service;
 using Service;
 using Microsoft.EntityFrameworkCore;
-using Service;
 
 namespace RestauranteWeb
 {
@@ -29,6 +28,7 @@ namespace RestauranteWeb
 
             builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
             builder.Services.AddTransient<IGrupocardapioService, GrupocardapioService>();
+            builder.Services.AddTransient<IFuncaoFuncionarioService, FuncaoFuncionarioService>();
 
             var app = builder.Build();
 

@@ -7,13 +7,13 @@ namespace Models
 {
     public class FuncaofuncionarioViewModel
     {
+        [Display(Name = "Código da função da Função")]
         [Required]
         [Key]
         public uint Id { get; set; }
         [Required]
         [StringLength(50)]
         public string? Nome { get; set; }
-        [Required]
-        public virtual SelectList? Funcionarios { get; set; }
+        
     }
 }
