@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using Core;
-using RestauranteWeb.Models;
+
 
 namespace RestauranteWeb.Mappers
 {
@@ -8,7 +7,7 @@ namespace RestauranteWeb.Mappers
     {
         public TiporestauranteProfile()
         {
-            CreateMap<TiporestauranteModel, Tiporestaurante>().ReverseMap();
+            CreateMap<Core.Tiporestaurante, Models.TiporestauranteViewModel>().ReverseMap();
         }
     }
 }

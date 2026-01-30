@@ -9,17 +9,17 @@ namespace Core.Service
 {
     public interface ITiporestauranteService
     {
-        bool Remover(uint id);
+        void Delete(uint id);
 
-		bool Editar(uint id, string nome);
+		void Edit(Tiporestaurante tipoRestaurante);
 
-		uint Inserir(Tiporestaurante tipoRestaurante);
+		uint Create(Tiporestaurante tipoRestaurante);
+        
+        Tiporestaurante? Get(uint id);
 
-        TiporestauranteDTO? Obter(uint id);
+        IEnumerable<Tiporestaurante> GetAll();
 
-        IEnumerable<TiporestauranteDTO> ObterTodos();
-
-        IEnumerable<RestaurantePorTipoDTO>? ObterTodosRestaurantesPeloId(uint id);
+      
 
     }
 }
