@@ -1,7 +1,7 @@
 ﻿@model RestauranteWeb.Models.GrupocardapioViewModel
 
 @{
-    ViewData["Title"] = "Remover";
+    ViewData["Title"] = "Delete";
 }
 
 <h1>Excluir</h1>
@@ -15,7 +15,7 @@
         <dd class="col-sm-10">@Html.DisplayFor(model => model.Nome)</dd>
     </dl>
 
-    <form asp-action="Remover">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Excluir" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-secondary">Voltar</a>
