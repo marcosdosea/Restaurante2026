@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Service;
-using Core;
 using Core.Service;
 using AutoMapper;
 using RestauranteWeb.Models;
@@ -17,116 +15,84 @@ namespace RestauranteWeb.Controllers
             _tiporestauranteService = tipoRestauranteService;
             _mapper = mapper;
         }
-        public IActionResult Index()
+        
+        // GET: TiporestauranteController
+        public ActionResult Index()
         {
-            var listaTiposRestaurantes = _tiporestauranteService.ObterTodos();
-            var listaTiposRestaurantesModel = _mapper.Map<List<TiporestauranteModel>>(listaTiposRestaurantes);
-            return View(listaTiposRestaurantesModel);
+            var tiposRestaurante = _tiporestauranteService.GetAll();
+            var tiposRestauranteViewModel = _mapper.Map<List<TiporestauranteViewModel>>(tiposRestaurante);
+            return View(tiposRestauranteViewModel);
         }
 
-        // GET: TipoRestaurante/Detalhes/5
-        public IActionResult Detalhes(uint id)
+
+        // GET: TiporestauranteController/Details/5
+        public ActionResult Details(uint id)
         {
-            var tipoRestauranteDto = _tiporestauranteService.Obter(id);
-            if (tipoRestauranteDto == null)
-            {
-                return NotFound();
-            }
-            var tipoRestauranteModel = _mapper.Map<TiporestauranteModel>(tipoRestauranteDto);
-            return View(tipoRestauranteModel);
+            var tipoRestaurante = _tiporestauranteService.Get(id);
+            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            return View(tipoRestauranteViewModel);
         }
 
-        // GET: TipoRestaurante/Criar
-        public ActionResult Criar()
+        // GET: TiporestauranteController/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-
+        // POST: TiporestauranteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        // POST: TipoRestaurante/Criar
-        public IActionResult Criar(TiporestauranteModel tipoRestauranteModel)
+        public ActionResult Create(TiporestauranteViewModel tiporestauranteViewModel)
         {
             if (ModelState.IsValid)
             {
-                var tipoRestaurante = _mapper.Map<Tiporestaurante>(tipoRestauranteModel);
-                _tiporestauranteService.Inserir(tipoRestaurante);
-                return RedirectToAction(nameof(Index));
+                var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
+                _tiporestauranteService.Create(tipoRestaurante);
             }
-            return View(tipoRestauranteModel);
-        }
-
-        //GET : TipoRestaurante/Editar/5
-        public ActionResult Editar(int id)
-        {
-            var tipoRestauranteDto = _tiporestauranteService.Obter((uint)id);
-            if (tipoRestauranteDto == null)
-            {
-                return NotFound();
-            }
-            var tipoRestauranteModel = _mapper.Map<TiporestauranteModel>(tipoRestauranteDto);
-            return View(tipoRestauranteModel);
-        }
-
-        // POST : TipoRestaurante/Editar/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public ActionResult Editar(int id, TiporestauranteModel tipoRestauranteModel)
-        {
-            if (ModelState.IsValid)
-            {   
-                _tiporestauranteService.Editar((uint)id, tipoRestauranteModel.Nome);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tipoRestauranteModel);
-        }
-
-
-		// GET: TipoRestaurante/Remover/5
-
-        public ActionResult Remover(int id)
-        {
-            var tipoRestauranteDto = _tiporestauranteService.Obter((uint)id);
-            if (tipoRestauranteDto == null)
-            {
-                return NotFound();
-            }
-            var tipoRestauranteModel = _mapper.Map<TiporestauranteModel>(tipoRestauranteDto);
-            return View(tipoRestauranteModel);
-		}
-
-		// POST: TipoRestaurante/Remover/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RemoverConfirmado(int id)
-        {
-            _tiporestauranteService.Remover((uint)id);
             return RedirectToAction(nameof(Index));
-		}
+        }
 
+        // GET: TiporestauranteController/Edit/5
+        public ActionResult Edit(uint id)
+        {
+            var tipoRestaurante = _tiporestauranteService.Get(id);
+            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            return View(tipoRestauranteViewModel);
+        }
 
+        // POST: TiporestauranteController/Edit/5
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(TiporestauranteViewModel tiporestauranteViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
+                _tiporestauranteService.Edit(tipoRestaurante);
+            }
+            return RedirectToAction(nameof(Index));
+        }
 
-		// GET: TipoRestaurante/Restaurantes/5
-		public IActionResult Restaurantes(uint id)
-		{
-			var restaurantesPorTipoDto = _tiporestauranteService.ObterTodosRestaurantesPeloId(id);
+        // GET: TiporestauranteController/Delete/5
+        public ActionResult Delete(uint id)
+        {
+            var tipoRestaurante = _tiporestauranteService.Get(id);
+            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            return View(tipoRestauranteViewModel);
+        }
 
-			if (restaurantesPorTipoDto == null)
-				return NotFound();
+        // POST: TiporestauranteController/Delete/5
 
-			var restaurantesModel = _mapper.Map<List<RestaurantePorTipoModel>>(restaurantesPorTipoDto);
-
-			ViewBag.TipoRestauranteId = id;
-
-			return View(restaurantesModel);
-		}
-
-
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(uint id,TiporestauranteViewModel tiporestauranteViewModel)
+        {
+            var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
+            _tiporestauranteService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
 
 
 	}
