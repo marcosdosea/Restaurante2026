@@ -26,9 +26,9 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: FuncaofuncionarioController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(uint id)
         {
-            var funcaoFuncionario = funcaoFuncionarioService.Get((uint)id);
+            var funcaoFuncionario = funcaoFuncionarioService.Get(id);
             FuncaofuncionarioViewModel funcaoFuncionarioViewModel = mapper.Map<FuncaofuncionarioViewModel>(funcaoFuncionario);
             return View(funcaoFuncionarioViewModel);
         }
@@ -56,9 +56,9 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: FuncaofuncionarioController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(uint id)
         {
-            var funcaoFuncionario = funcaoFuncionarioService.Get((uint)id);
+            var funcaoFuncionario = funcaoFuncionarioService.Get(id);
             var funcaoFuncionarioViewModel = mapper.Map<FuncaofuncionarioViewModel>(funcaoFuncionario);
             return View(funcaoFuncionarioViewModel);
         }
@@ -66,9 +66,9 @@ namespace RestauranteWeb.Controllers
         // POST: FuncaofuncionarioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, FuncaofuncionarioViewModel funcaofuncionarioViewModel)
+        public ActionResult Edit(uint id, FuncaofuncionarioViewModel funcaofuncionarioViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var funcaoFuncionario = mapper.Map<Funcaofuncionario>(funcaofuncionarioViewModel);
                 funcaoFuncionarioService.Edit(funcaoFuncionario);
@@ -78,7 +78,7 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: FuncaofuncionarioController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(uint id)
         {
             var funcaoFuncionario = funcaoFuncionarioService.Get((uint)id);
             var funcaoFuncionarioViewModel = mapper.Map<FuncaofuncionarioViewModel>(funcaoFuncionario);
@@ -88,7 +88,7 @@ namespace RestauranteWeb.Controllers
         // POST: FuncaofuncionarioController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FuncaofuncionarioViewModel funcaofuncionarioViewModel)
+        public ActionResult Delete(uint id, FuncaofuncionarioViewModel funcaofuncionarioViewModel)
         {
             try
             {
