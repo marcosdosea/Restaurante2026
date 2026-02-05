@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Service
 {
-    public interface IFormapagamento
+    public interface IFormapagamentoService
     {
 		void Delete(uint id);
 

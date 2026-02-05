@@ -29,8 +29,9 @@ namespace RestauranteWeb
             builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
             builder.Services.AddTransient<IGrupocardapioService, GrupocardapioService>();
             builder.Services.AddTransient<IFuncaoFuncionarioService, FuncaoFuncionarioService>();
+            builder.Services.AddTransient<IFormapagamentoService, FormapagamentoService>();
 
-            var app = builder.Build();
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

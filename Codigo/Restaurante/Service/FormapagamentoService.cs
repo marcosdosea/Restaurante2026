@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Service
 {
-    public class FormapagamentoService : IFormapagamento
+    public class FormapagamentoService : IFormapagamentoService
     {
 
 		private readonly RestauranteContext _context;

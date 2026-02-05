@@ -7,10 +7,10 @@ namespace RestauranteWeb.Controllers
 {
     public class FormapagamentoController : Controller
     {
-		private readonly IFormapagamento _formaPagamentoService;
+		private readonly IFormapagamentoService _formaPagamentoService;
 		private readonly IMapper _mapper;
 
-		public FormapagamentoController(IFormapagamento formaPagamentoService, IMapper mapper)
+		public FormapagamentoController(IFormapagamentoService formaPagamentoService, IMapper mapper)
 		{
 			_formaPagamentoService = formaPagamentoService;
 			_mapper = mapper;
