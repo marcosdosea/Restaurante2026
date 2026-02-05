@@ -20,7 +20,7 @@ namespace RestauranteWeb.Controllers
         public ActionResult Index()
         {
             var tiposRestaurante = _tiporestauranteService.GetAll();
-            var tiposRestauranteViewModel = _mapper.Map<List<TiporestauranteViewModel>>(tiposRestaurante);
+            var tiposRestauranteViewModel = _mapper.Map<List<FormapagamentoViewModel>>(tiposRestaurante);
             return View(tiposRestauranteViewModel);
         }
 
@@ -29,7 +29,7 @@ namespace RestauranteWeb.Controllers
         public ActionResult Details(uint id)
         {
             var tipoRestaurante = _tiporestauranteService.Get(id);
-            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            var tipoRestauranteViewModel = _mapper.Map<FormapagamentoViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
 
@@ -42,7 +42,7 @@ namespace RestauranteWeb.Controllers
         // POST: TiporestauranteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TiporestauranteViewModel tiporestauranteViewModel)
+        public ActionResult Create(FormapagamentoViewModel tiporestauranteViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace RestauranteWeb.Controllers
         public ActionResult Edit(uint id)
         {
             var tipoRestaurante = _tiporestauranteService.Get(id);
-            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            var tipoRestauranteViewModel = _mapper.Map<FormapagamentoViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
 
@@ -64,7 +64,7 @@ namespace RestauranteWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(TiporestauranteViewModel tiporestauranteViewModel)
+        public ActionResult Edit(FormapagamentoViewModel tiporestauranteViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace RestauranteWeb.Controllers
         public ActionResult Delete(uint id)
         {
             var tipoRestaurante = _tiporestauranteService.Get(id);
-            var tipoRestauranteViewModel = _mapper.Map<TiporestauranteViewModel>(tipoRestaurante);
+            var tipoRestauranteViewModel = _mapper.Map<FormapagamentoViewModel>(tipoRestaurante);
             return View(tipoRestauranteViewModel);
         }
 
@@ -87,7 +87,7 @@ namespace RestauranteWeb.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(uint id,TiporestauranteViewModel tiporestauranteViewModel)
+        public ActionResult Delete(uint id,FormapagamentoViewModel tiporestauranteViewModel)
         {
             var tipoRestaurante = _mapper.Map<Core.Tiporestaurante>(tiporestauranteViewModel);
             _tiporestauranteService.Delete(id);

@@ -7,7 +7,7 @@ namespace RestauranteWeb.Mappers
     {
         public TiporestauranteProfile()
         {
-            CreateMap<Core.Tiporestaurante, Models.TiporestauranteViewModel>().ReverseMap();
+            CreateMap<Core.Tiporestaurante, Models.FormapagamentoViewModel>().ReverseMap();
         }
     }
 }
