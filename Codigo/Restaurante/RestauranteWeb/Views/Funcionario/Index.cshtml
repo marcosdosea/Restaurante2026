@@ -1,28 +1,32 @@
-﻿@model IEnumerable<RestauranteWeb.Models.GrupocardapioViewModel>
+﻿@model IEnumerable<RestauranteWeb.Models.FuncionarioViewModel>
 
 @{
-    ViewData["Title"] = "Grupos do Cardápio";
+    ViewData["Title"] = "Funcionários";
 }
 
-<h1>Grupos do Cardápio</h1>
+<h1>Funcionários</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Novo Grupo</a>
+    <a asp-action="Create" class="btn btn-primary">Novo Funcionário</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Id)</th>
             <th>@Html.DisplayNameFor(model => model.Nome)</th>
-            <th>Ações</th>
+            <th>@Html.DisplayNameFor(model => model.Cpf)</th>
+            <th>@Html.DisplayNameFor(model => model.NomeRestaurante)</th>
+            <th>@Html.DisplayNameFor(model => model.NomeFuncao)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
+                <td>@Html.DisplayFor(modelItem => item.NomeRestaurante)</td>
+                <td>@Html.DisplayFor(modelItem => item.NomeFuncao)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalhes</a> |

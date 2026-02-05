@@ -1,7 +1,7 @@
 ﻿@model RestauranteWeb.Models.GrupocardapioViewModel
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Details";
 }
 
 <h1>Detalhes</h1>
@@ -15,6 +15,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Editar" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a> |
     <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>

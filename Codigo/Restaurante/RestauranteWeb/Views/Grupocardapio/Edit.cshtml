@@ -1,14 +1,14 @@
 ﻿@model RestauranteWeb.Models.GrupocardapioViewModel
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Edit";
 }
 
 <h1>Editar Grupo</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editar">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group mb-3">
@@ -22,4 +22,5 @@
             </div>
         </form>
     </div>
+</div>
 </div>

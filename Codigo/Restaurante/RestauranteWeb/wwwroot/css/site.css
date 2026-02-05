@@ -21,11 +21,6 @@ body {
   margin-bottom: 60px;
 }
 
-.table td,
-.table th {
-    white-space: nowrap;
-}
-
 /*estilo global para botoes de criar */
 a[href$="/Create"] {
     display: inline-block;
