@@ -4,7 +4,7 @@ namespace RestauranteWeb.Models
 {
     public class FormapagamentoViewModel
     {
-
+		[Key]
 		[Required(ErrorMessage = "O campo Id é obrigatório.")]
 		public uint Id { get; set; }
 

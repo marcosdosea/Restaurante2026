@@ -64,11 +64,11 @@ namespace RestauranteWeb.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(FormapagamentoViewModel tiporestauranteViewModel)
+		public ActionResult Edit(FormapagamentoViewModel formapagamentoViewModel)
 		{
 			if (ModelState.IsValid)
 			{
-				var formaPagamento = _mapper.Map<Core.Formapagamento>(tiporestauranteViewModel);
+				var formaPagamento = _mapper.Map<Core.Formapagamento>(formapagamentoViewModel);
 				_formaPagamentoService.Edit(formaPagamento);
 			}
 			return RedirectToAction(nameof(Index));
