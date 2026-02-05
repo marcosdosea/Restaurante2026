@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Codigo",
+    "\\Codigo\\Restaurante",
+    "\\Codigo\\Restaurante\\RestauranteWeb",
+    "\\Codigo\\Restaurante\\RestauranteWeb\\Views",
+    "\\Codigo\\Restaurante\\RestauranteWeb\\Views\\Grupocardapio"
   ],
-  "SelectedNode": "\\Restaurante.sln",
+  "SelectedNode": "\\Codigo\\Restaurante\\Core",
   "PreviewInSolutionExplorer": false
 }
