@@ -29,6 +29,7 @@ namespace RestauranteWeb
             builder.Services.AddTransient<ITiporestauranteService, TiporestauranteService>();
             builder.Services.AddTransient<IGrupocardapioService, GrupocardapioService>();
             builder.Services.AddTransient<IFuncaoFuncionarioService, FuncaoFuncionarioService>();
+            builder.Services.AddTransient<IMesaService, MesaService>();
 
             var app = builder.Build();
 
