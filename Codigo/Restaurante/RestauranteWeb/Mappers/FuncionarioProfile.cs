@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core;
 using Core.DTO;
 using RestauranteWeb.Models;
 
@@ -9,6 +10,7 @@ namespace RestauranteWeb.Mappers
         public FuncionarioProfile()
         {
             CreateMap<FuncionarioDTO, FuncionarioViewModel>().ReverseMap();
+            CreateMap<FuncionarioDTO, Funcionario>().ReverseMap();
         }
     }
 }
