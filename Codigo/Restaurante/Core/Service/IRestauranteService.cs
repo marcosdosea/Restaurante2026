@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.DTO;
 
 namespace Core.Service
 {
@@ -16,7 +12,7 @@ namespace Core.Service
         void Delete(uint id);
         Restaurante? Get(uint id);
 
-        IEnumerable<Restaurante> GetAll();
+        IEnumerable<RestauranteDTO> GetAll();
 
     }
 }

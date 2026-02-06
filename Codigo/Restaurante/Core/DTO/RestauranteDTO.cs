@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Core.DTO
 {
-    internal class RestauranteDTO
+    public class RestauranteDTO
     {
+        public uint Id { get; set; }
+        public string Cnpj { get; set; } = string.Empty;
+        public string Nome { get; set; } = string.Empty;
     }
 }
