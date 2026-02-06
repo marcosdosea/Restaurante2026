@@ -24,7 +24,7 @@ namespace RestauranteWeb.Controllers
             return View(listaModel);
         }
 
-        public ActionResult Detalhes(uint id)
+        public ActionResult Details(uint id)
         {
             var grupo = _grupoService.Get(id);
             if (grupo == null) return NotFound();
@@ -32,14 +32,14 @@ namespace RestauranteWeb.Controllers
             return View(model);
         }
 
-        public ActionResult Criar()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Criar(GrupocardapioViewModel model)
+        public ActionResult Create(GrupocardapioViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace RestauranteWeb.Controllers
             return View(model);
         }
 
-        public ActionResult Editar(uint id)
+        public ActionResult Edit(uint id)
         {
             var grupo = _grupoService.Get(id);
             if (grupo == null) return NotFound();
@@ -60,7 +60,7 @@ namespace RestauranteWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(uint id, GrupocardapioViewModel model)
+        public ActionResult Edit(uint id, GrupocardapioViewModel model)
         {
             if (id != model.Id) return BadRequest();
             if (ModelState.IsValid)
@@ -72,17 +72,16 @@ namespace RestauranteWeb.Controllers
             return View(model);
         }
 
-        public ActionResult Remover(uint id)
+        public ActionResult Delete(uint id)
         {
             var grupo = _grupoService.Get(id);
-            if (grupo == null) return NotFound();
             var model = _mapper.Map<GrupocardapioViewModel>(grupo);
             return View(model);
         }
 
-        [HttpPost, ActionName("Remover")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult RemoverConfirmado(uint id)
+        public ActionResult DeleteConfirmed(uint id)
         {
             _grupoService.Delete(id);
             return RedirectToAction(nameof(Index));

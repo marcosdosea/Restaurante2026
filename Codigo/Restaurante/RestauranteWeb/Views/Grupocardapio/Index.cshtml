@@ -7,7 +7,7 @@
 <h1>Grupos do Cardápio</h1>
 
 <p>
-    <a asp-action="Criar" class="btn btn-primary">Novo Grupo</a>
+    <a asp-action="Create" class="btn btn-primary">Novo Grupo</a>
 </p>
 <table class="table">
     <thead>
@@ -24,9 +24,9 @@
                 <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                 <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a> |
-                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalhes</a> |
-                    <a asp-action="Remover" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Excluir</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Excluir</a>
                 </td>
             </tr>
         }
