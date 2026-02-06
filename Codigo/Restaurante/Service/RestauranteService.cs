@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,9 +66,15 @@ namespace Service
         /// retorna todos os restaurantes cadastrado no banco de dados
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Restaurante> GetAll()
+        public IEnumerable<RestauranteDTO> GetAll()
         {
-            return context.Restaurantes.AsNoTracking();
+
+            return context.Restaurantes.AsNoTracking().Select(r => new RestauranteDTO
+            {
+                Id = r.Id,
+                Cnpj = r.Cnpj,
+                Nome = r.Nome
+            });
         }
     }
 
