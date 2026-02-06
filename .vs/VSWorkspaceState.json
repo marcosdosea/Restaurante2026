@@ -3,10 +3,11 @@
     "",
     "\\Codigo",
     "\\Codigo\\Restaurante",
+    "\\Codigo\\Restaurante\\Core",
     "\\Codigo\\Restaurante\\RestauranteWeb",
     "\\Codigo\\Restaurante\\RestauranteWeb\\Views",
     "\\Codigo\\Restaurante\\RestauranteWeb\\Views\\Grupocardapio"
   ],
-  "SelectedNode": "\\Codigo\\Restaurante\\Core",
+  "SelectedNode": "\\Codigo\\Restaurante\\Restaurante.sln",
   "PreviewInSolutionExplorer": false
 }
