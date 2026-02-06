@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Core;
 
 public partial class Restaurante
@@ -34,4 +34,6 @@ public partial class Restaurante
     public virtual ICollection<Itemcardapio> Itemcardapios { get; set; } = new List<Itemcardapio>();
 
     public virtual ICollection<Mesa> Mesas { get; set; } = new List<Mesa>();
-}
+
+
+    }
