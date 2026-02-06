@@ -35,14 +35,14 @@ namespace Service
         public Mesa? Get(int id)
         {
             return context.Mesas
-                .Include(m => m.IdRestaurante)
+                .Include(m => m.IdRestauranteNavigation)   // <-- navigation
                 .FirstOrDefault(m => m.Id == id);
         }
 
         public IEnumerable<Mesa> GetAll()
         {
             return context.Mesas
-                .Include(m => m.IdRestaurante)
+                .Include(m => m.IdRestauranteNavigation)   // <-- navigation
                 .AsNoTracking()
                 .ToList();
         }
