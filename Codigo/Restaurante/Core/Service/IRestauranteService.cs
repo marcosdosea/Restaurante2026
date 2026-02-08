@@ -14,5 +14,6 @@ namespace Core.Service
 
         IEnumerable<RestauranteDTO> GetAll();
 
+
     }
 }
