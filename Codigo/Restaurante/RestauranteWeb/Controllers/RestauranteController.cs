@@ -99,34 +99,5 @@ namespace RestauranteWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-        [HttpPost]
-        public IActionResult GetByPage()
-        {
-            // Pegando parâmetros que o DataTable envia
-            var draw = Request.Form["draw"].FirstOrDefault();
-            var start = Request.Form["start"].FirstOrDefault();
-            var length = Request.Form["length"].FirstOrDefault();
-            var searchValue = Request.Form["search[value]"].FirstOrDefault();
-
-            int pageSize = length != null ? Convert.ToInt32(length) : 0;
-            int skip = start != null ? Convert.ToInt32(start) : 0;
-
-            // Aqui você busca os dados do banco
-            var query = restauranteService.GetAll(); // exemplo
-
-            var recordsTotal = query.Count();
-
-            var data = query.Skip(skip).Take(pageSize).ToList();
-
-            // Retorno no formato que o DataTable espera
-            return Json(new
-            {
-                draw = draw,
-                recordsFiltered = recordsTotal,
-                recordsTotal = recordsTotal,
-                data = data
-            });
-        }
     }
 }

@@ -1,4 +1,4 @@
-/*! DataTables 2.3.4
+/*! DataTables 2.3.7
  * © SpryMedia Ltd - datatables.net/license
  */
 
@@ -174,7 +174,7 @@
 				"sDestroyWidth": $this[0].style.width,
 				"sInstance":     sId,
 				"sTableId":      sId,
-				colgroup: $('<colgroup>').prependTo(this),
+				colgroup: $('<colgroup>'),
 				fastData: function (row, column, type) {
 					return _fnGetCellData(oSettings, row, column, type);
 				}
@@ -247,6 +247,7 @@
 				"orderHandler",
 				"titleRow",
 				"typeDetect",
+				"columnTitleTag",
 				[ "iCookieDuration", "iStateDuration" ], // backwards compat
 				[ "oSearch", "oPreviousSearch" ],
 				[ "aoSearchCols", "aoPreSearchCols" ],
@@ -411,7 +412,7 @@
 			
 			if ( oSettings.caption ) {
 				if ( caption.length === 0 ) {
-					caption = $('<caption/>').appendTo( $this );
+					caption = $('<caption/>').prependTo( $this );
 				}
 			
 				caption.html( oSettings.caption );
@@ -422,6 +423,14 @@
 			if (caption.length) {
 				caption[0]._captionSide = caption.css('caption-side');
 				oSettings.captionNode = caption[0];
+			}
+			
+			// Place the colgroup element in the correct location for the HTML structure
+			if (caption.length) {
+				oSettings.colgroup.insertAfter(caption);
+			}
+			else {
+				oSettings.colgroup.prependTo(oSettings.nTable);
 			}
 			
 			if ( thead.length === 0 ) {
@@ -1280,7 +1289,7 @@
 	};
 	
 	// Replaceable function in api.util
-	var _stripHtml = function (input) {
+	var _stripHtml = function (input, replacement) {
 		if (! input || typeof input !== 'string') {
 			return input;
 		}
@@ -1292,7 +1301,7 @@
 	
 		var previous;
 	
-		input = input.replace(_re_html, ''); // Complete tags
+		input = input.replace(_re_html, replacement || ''); // Complete tags
 	
 		// Safety for incomplete script tag - use do / while to ensure that
 		// we get all instances
@@ -1757,7 +1766,7 @@
 			}
 		},
 	
-		stripHtml: function (mixed) {
+		stripHtml: function (mixed, replacement) {
 			var type = typeof mixed;
 	
 			if (type === 'function') {
@@ -1765,7 +1774,7 @@
 				return;
 			}
 			else if (type === 'string') {
-				return _stripHtml(mixed);
+				return _stripHtml(mixed, replacement);
 			}
 			return mixed;
 		},
@@ -2937,12 +2946,12 @@
 	
 			// Max length string. Its a fairly cheep recalculation, so not worth
 			// something more complicated
-			cols[ colIdx ].maxLenString = null;
+			cols[ colIdx ].wideStrings = null;
 		}
 		else {
 			for ( i=0, iLen=cols.length ; i<iLen ; i++ ) {
 				cols[i].sType = null;
-				cols[i].maxLenString = null;
+				cols[i].wideStrings = null;
 			}
 	
 			// Update DataTables special `DT_*` attributes for the row
@@ -3367,7 +3376,7 @@
 						colspan++;
 					}
 	
-					var titleSpan = $('span.dt-column-title', cell);
+					var titleSpan = $('.dt-column-title', cell);
 	
 					structure[row][column] = {
 						cell: cell,
@@ -3483,6 +3492,14 @@
 			{
 				var iDataIndex = aiDisplay[j];
 				var aoData = oSettings.aoData[ iDataIndex ];
+	
+				// Row has been deleted - can't be displayed
+				if (aoData === null)
+				{
+					continue;
+				}
+	
+				// Row node hasn't been created yet
 				if ( aoData.nTr === null )
 				{
 					_fnCreateTr( oSettings, iDataIndex );
@@ -4073,8 +4090,8 @@
 						}
 	
 						// Wrap the column title so we can write to it in future
-						if ( $('span.dt-column-title', cell).length === 0) {
-							$('<span>')
+						if ( $('.dt-column-title', cell).length === 0) {
+							$(document.createElement(settings.columnTitleTag))
 								.addClass('dt-column-title')
 								.append(cell.childNodes)
 								.appendTo(cell);
@@ -4085,9 +4102,9 @@
 							isHeader &&
 							jqCell.filter(':not([data-dt-order=disable])').length !== 0 &&
 							jqCell.parent(':not([data-dt-order=disable])').length !== 0 &&
-							$('span.dt-column-order', cell).length === 0
+							$('.dt-column-order', cell).length === 0
 						) {
-							$('<span>')
+							$(document.createElement(settings.columnTitleTag))
 								.addClass('dt-column-order')
 								.appendTo(cell);
 						}
@@ -4096,7 +4113,7 @@
 						// layout for those elements
 						var headerFooter = isHeader ? 'header' : 'footer';
 	
-						if ( $('span.dt-column-' + headerFooter, cell).length === 0) {
+						if ( $('div.dt-column-' + headerFooter, cell).length === 0) {
 							$('<div>')
 								.addClass('dt-column-' + headerFooter)
 								.append(cell.childNodes)
@@ -4253,6 +4270,10 @@
 		// Custom Ajax option to submit the parameters as a JSON string
 		if (baseAjax.submitAs === 'json' && typeof data === 'object') {
 			baseAjax.data = JSON.stringify(data);
+	
+			if (!baseAjax.contentType) {
+				baseAjax.contentType = 'application/json; charset=utf-8';
+			}
 		}
 	
 		if (typeof ajax === 'function') {
@@ -5408,7 +5429,7 @@
 			visibleColumns = _fnGetColumns( settings, 'bVisible' ),
 			tableWidthAttr = table.getAttribute('width'), // from DOM element
 			tableContainer = table.parentNode,
-			i, column, columnIdx;
+			i, j, column, columnIdx;
 			
 		var styleWidth = table.style.width;
 		var containerWidth = _fnWrapperWidth(settings);
@@ -5442,17 +5463,16 @@
 			false
 		);
 	
-		// Construct a single row, worst case, table with the widest
-		// node in the data, assign any user defined widths, then insert it into
-		// the DOM and allow the browser to do all the hard work of calculating
-		// table widths
+		// Construct a worst case table with the widest, assign any user defined
+		// widths, then insert it into  the DOM and allow the browser to do all
+		// the hard work of calculating table widths
 		var tmpTable = $(table.cloneNode())
 			.css( 'visibility', 'hidden' )
+			.css( 'margin', 0 )
 			.removeAttr( 'id' );
 	
 		// Clean up the table body
 		tmpTable.append('<tbody/>')
-		var tr = $('<tr/>').appendTo( tmpTable.find('tbody') );
 	
 		// Clone the table header and footer - we can't use the header / footer
 		// from the cloned table, since if scrolling is active, the table's
@@ -5492,23 +5512,37 @@
 			}
 		} );
 	
-		// Find the widest piece of data for each column and put it into the table
-		for ( i=0 ; i<visibleColumns.length ; i++ ) {
-			columnIdx = visibleColumns[i];
-			column = columns[ columnIdx ];
+		// Get the widest strings for each of the visible columns and add them to
+		// our table to create a "worst case"
+		var longestData = [];
 	
-			var longest = _fnGetMaxLenString(settings, columnIdx);
-			var autoClass = _ext.type.className[column.sType];
-			var text = longest + column.sContentPadding;
-			var insert = longest.indexOf('<') === -1
-				? document.createTextNode(text)
-				: text
-			
-			$('<td/>')
-				.addClass(autoClass)
-				.addClass(column.sClass)
-				.append(insert)
-				.appendTo(tr);
+		for ( i=0 ; i<visibleColumns.length ; i++ ) {
+			longestData.push(_fnGetWideStrings(settings, visibleColumns[i]));
+		}
+	
+		if (longestData.length) {
+			for ( i=0 ; i<longestData[0].length ; i++ ) {
+				var tr = $('<tr/>').appendTo( tmpTable.find('tbody') );
+	
+				for ( j=0 ; j<visibleColumns.length ; j++ ) {
+					columnIdx = visibleColumns[j];
+					column = columns[ columnIdx ];
+	
+					var longest = longestData[j][i] || '';
+					var autoClass = _ext.type.className[column.sType];
+					var padding = column.sContentPadding || (scrollX ? '-' : '');
+					var text = longest + padding;
+					var insert = longest.indexOf('<') === -1 && longest.indexOf('&') === -1
+						? document.createTextNode(text)
+						: text
+	
+					$('<td/>')
+						.addClass(autoClass)
+						.addClass(column.sClass)
+						.append(insert)
+						.appendTo(tr);
+				}
+			}
 		}
 	
 		// Tidy the temporary table - remove name attributes so there aren't
@@ -5647,19 +5681,31 @@
 	}
 	
 	/**
-	 * Get the maximum strlen for each data column
+	 * Get the widest strings for each column.
+	 *
+	 * It is very difficult to determine what the widest string actually is due to variable character
+	 * width and kerning. Doing an exact calculation with the DOM or even Canvas would kill performance
+	 * and this is a critical point, so we use two techniques to determine a collection of the longest
+	 * strings from the column, which will likely contain the widest strings:
+	 *
+	 * 1) Get the top three longest strings from the column
+	 * 2) Get the top three widest words (i.e. an unbreakable phrase)
+	 *
 	 *  @param {object} settings dataTables settings object
 	 *  @param {int} colIdx column of interest
-	 *  @returns {string} string of the max length
+	 *  @returns {string[]} Array of the longest strings
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnGetMaxLenString( settings, colIdx )
+	function _fnGetWideStrings( settings, colIdx )
 	{
 		var column = settings.aoColumns[colIdx];
 	
-		if (! column.maxLenString) {
-			var s, max='', maxLen = -1;
-		
+		// Do we need to recalculate (i.e. was invalidated), or just use the cached data?
+		if (! column.wideStrings) {
+			var allStrings = [];
+			var collection = [];
+	
+			// Create an array with the string information for the column
 			for ( var i=0, iLen=settings.aiDisplayMaster.length ; i<iLen ; i++ ) {
 				var rowIdx = settings.aiDisplayMaster[i];
 				var data = _fnGetRowDisplay(settings, rowIdx)[colIdx];
@@ -5674,21 +5720,54 @@
 					.replace(/id=".*?"/g, '')
 					.replace(/name=".*?"/g, '');
 	
-				s = _stripHtml(cellString)
+				// Don't want Javascript at all in these calculation cells.
+				cellString = cellString.replace(/<script.*?<\/script>/gi, ' ');
+	
+				var noHtml = _stripHtml(cellString, ' ')
 					.replace( /&nbsp;/g, ' ' );
 		
-				if ( s.length > maxLen ) {
-					// We want the HTML in the string, but the length that
-					// is important is the stripped string
-					max = cellString;
-					maxLen = s.length;
-				}
+				// The length is calculated on the text only, but we keep the HTML
+				// in the string so it can be used in the calculation table
+				collection.push({
+					str: cellString,
+					len: noHtml.length
+				});
+	
+				allStrings.push(noHtml);
 			}
 	
-			column.maxLenString = max;
+			// Order and then cut down to the size we need
+			collection
+				.sort(function (a, b) {
+					return b.len - a.len;
+				})
+				.splice(3);
+	
+			column.wideStrings = collection.map(function (item) {
+				return item.str;
+			});
+	
+			// Longest unbroken string
+			let parts = allStrings.join(' ').split(' ');
+	
+			parts.sort(function (a, b) {
+				return b.length - a.length;
+			});
+	
+			if (parts.length) {
+				column.wideStrings.push(parts[0]);
+			}
+	
+			if (parts.length > 1) {
+				column.wideStrings.push(parts[1]);
+			}
+	
+			if (parts.length > 2) {
+				column.wideStrings.push(parts[3]);
+			}
 		}
 	
-		return column.maxLenString;
+		return column.wideStrings;
 	}
 	
 	
@@ -8709,7 +8788,7 @@
 			// Automatic - find the _last_ unique cell from the top that is not empty (last for
 			// backwards compatibility)
 			for (var i=0 ; i<header.length ; i++) {
-				if (header[i][column].unique && $('span.dt-column-title', header[i][column].cell).text()) {
+				if (header[i][column].unique && $('.dt-column-title', header[i][column].cell).text()) {
 					target = i;
 				}
 			}
@@ -8802,6 +8881,10 @@
 						return columns.map( function (col, idx) {
 							// Not visible, can't match
 							if (! col.bVisible) {
+								return null;
+							}
+	
+							if (col.responsiveVisible === false) {
 								return null;
 							}
 	
@@ -9016,7 +9099,7 @@
 				title = undefined;
 			}
 	
-			var span = $('span.dt-column-title', this.column(column).header(row));
+			var span = $('.dt-column-title', this.column(column).header(row));
 	
 			if (title !== undefined) {
 				span.html(title);
@@ -9029,13 +9112,16 @@
 	
 	_api_registerPlural( 'columns().types()', 'column().type()', function () {
 		return this.iterator( 'column', function ( settings, column ) {
-			var type = settings.aoColumns[column].sType;
+			var colObj = settings.aoColumns[column]
+			var type = colObj.sType;
 	
 			// If the type was invalidated, then resolve it. This actually does
 			// all columns at the moment. Would only happen once if getting all
 			// column's data types.
 			if (! type) {
 				_fnColumnTypes(settings);
+	
+				type = colObj.sType;
 			}
 	
 			return type;
@@ -10187,8 +10273,8 @@
 	
 	// Needed for header and footer, so pulled into its own function
 	function cleanHeader(node, className) {
-		$(node).find('span.dt-column-order').remove();
-		$(node).find('span.dt-column-title').each(function () {
+		$(node).find('.dt-column-order').remove();
+		$(node).find('.dt-column-title').each(function () {
 			var title = $(this).html();
 			$(this).parent().parent().append(title);
 			$(this).remove();
@@ -10206,7 +10292,7 @@
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "2.3.4";
+	DataTable.version = "2.3.7";
 	
 	/**
 	 * Private data store, containing all of the settings objects that are
@@ -10508,8 +10594,8 @@
 		 */
 		"sWidthOrig": null,
 	
-		/** Cached string which is the longest in the column */
-		maxLenString: null,
+		/** Cached longest strings from a column */
+		wideStrings: null,
 	
 		/**
 		 * Store for named searches
@@ -11374,7 +11460,10 @@
 		iDeferLoading: null,
 	
 		/** Event listeners */
-		on: null
+		on: null,
+	
+		/** Title wrapper element type */
+		columnTitleTag: 'span'
 	};
 	
 	_fnHungarianMap( DataTable.defaults );
@@ -12338,7 +12427,10 @@
 		orderHandler: true,
 	
 		/** Title row indicator */
-		titleRow: null
+		titleRow: null,
+	
+		/** Title wrapper element type */
+		columnTitleTag: 'span'
 	};
 	
 	/**
