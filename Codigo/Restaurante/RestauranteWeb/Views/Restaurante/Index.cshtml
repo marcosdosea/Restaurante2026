@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<Core.DTO.RestauranteDTO>
 
+<link rel="stylesheet" type="text/css" href="~/lib/datatable/css/jquery.dataTables.min.css" />
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
+<h1>Restaurantes</h1>
+ 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="tableRestaurante" class="table">
     <thead>
         <tr>
             <th>
@@ -24,6 +24,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+
         <tr> 
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -40,3 +41,24 @@
 }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tableRestaurante').DataTable({
+                language: {
+                    url: '/lib/datatable/js/pt-BR.json'
+                }
+               
+            });
+
+
+        });
+        
+
+    </script>
+    <script src="~/lib/datatable/js/jquery.dataTables.min.js"></script>
+}
+
+
+

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestauranteWeb.Models;
+using Service;
 
 namespace RestauranteWeb.Controllers
 {
@@ -97,5 +98,6 @@ namespace RestauranteWeb.Controllers
             restauranteService.Delete(restauranteViewModel.Id);
             return RedirectToAction(nameof(Index));
         }
+
     }
 }

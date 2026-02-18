@@ -4,7 +4,7 @@
   "libraries": [
     {
       "library": "datatables.net@2.3.4",
-      "destination": "wwwroot/js/datatables.net/"
+      "destination": "wwwroot/lib/datatables.net/"
     }
   ]
 }
