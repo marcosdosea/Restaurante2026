@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using Core;
 using Core.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestauranteWeb.Models;
-using Service;
 
 namespace RestauranteWeb.Controllers
 {
@@ -51,7 +49,7 @@ namespace RestauranteWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RestauranteViewModel restauranteViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 
                 var restaurante = mapper.Map<Restaurante>(restauranteViewModel);
