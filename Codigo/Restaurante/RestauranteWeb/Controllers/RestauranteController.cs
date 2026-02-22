@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestauranteWeb.Models;
@@ -28,14 +29,16 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: RestauranteController/Details/5
+        [Authorize]
         public ActionResult Details(uint id)
         {
             var restaurante = restauranteService.Get(id);
             RestauranteViewModel restauranteViewModel = mapper.Map<RestauranteViewModel>(restaurante);
             return View(restauranteViewModel);
         }
-
+        
         // GET: RestauranteController/Create
+        [Authorize] //a seguinr adicona a autorizao para acessar as telas 
         public ActionResult Create()
         {   
             RestauranteViewModel restauranteModel = new();
@@ -47,6 +50,7 @@ namespace RestauranteWeb.Controllers
         // POST: RestauranteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(RestauranteViewModel restauranteViewModel)
         {
             if (!ModelState.IsValid)
@@ -60,6 +64,7 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: RestauranteController/Edit/5
+        [Authorize]
         public ActionResult Edit(uint id)
         {
             var restaurante = restauranteService.Get(id);
@@ -70,6 +75,7 @@ namespace RestauranteWeb.Controllers
         // POST: RestauranteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(uint id, RestauranteViewModel restauranteViewModel)
         {
             if (ModelState.IsValid)
@@ -81,6 +87,7 @@ namespace RestauranteWeb.Controllers
         }
 
         // GET: RestauranteController/Delete/5
+        [Authorize]
         public ActionResult Delete(uint id)
         {
             var restaurante = restauranteService.Get(id);
@@ -91,6 +98,7 @@ namespace RestauranteWeb.Controllers
         // POST: RestauranteController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Delete(RestauranteViewModel restauranteViewModel)
         {
             restauranteService.Delete(restauranteViewModel.Id);

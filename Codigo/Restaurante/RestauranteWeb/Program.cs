@@ -2,6 +2,9 @@ using Core;
 using Core.Service;
 using Service;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using RestauranteWeb.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace RestauranteWeb
 {
@@ -22,6 +25,53 @@ namespace RestauranteWeb
             builder.Services.AddDbContext<RestauranteContext>(
                 options => options.UseMySQL(connectionString));
 
+            var connectionIdentityString = builder.Configuration.GetConnectionString("IdentityContextConnection");
+            if (string.IsNullOrEmpty(connectionIdentityString))
+            {
+                throw new InvalidOperationException("Conexão com o banco de dados de usuários não foi configurada corretamente.");
+            }
+            builder.Services.AddDbContext<IdentityContext>(
+                options => options.UseMySQL(connectionIdentityString));
+
+            builder.Services.AddDefaultIdentity<UsuarioIdentity>(options =>
+            {
+                //signIn settings
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+
+                //password settings
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+
+                //default user settings
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+
+                //lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+            }).AddEntityFrameworkStores<IdentityContext>();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.Cookie.Name = "RestauranteWebAuthCookie";
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.LoginPath = "/Identity/Account/Login";
+
+                //returnUrlParameter
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+                options.SlidingExpiration = true;
+            });
+
             builder.Services.AddTransient<IRestauranteService, RestauranteService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -34,6 +84,15 @@ namespace RestauranteWeb
             builder.Services.AddTransient<IFormapagamentoService, FormapagamentoService>();
             builder.Services.AddTransient<IFuncionarioService, FuncionarioService>();
             builder.Services.AddTransient<IAtendimentoService, AtendimentoService>();
+
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -50,7 +109,12 @@ namespace RestauranteWeb
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            
+            app.UseSession();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
