@@ -33,6 +33,7 @@ namespace RestauranteWeb
             builder.Services.AddTransient<IMesaService, MesaService>();
             builder.Services.AddTransient<IFormapagamentoService, FormapagamentoService>();
             builder.Services.AddTransient<IFuncionarioService, FuncionarioService>();
+            builder.Services.AddTransient<IAtendimentoService, AtendimentoService>();
 
             var app = builder.Build();
 

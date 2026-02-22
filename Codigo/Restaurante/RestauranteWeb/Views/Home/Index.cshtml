@@ -5,14 +5,43 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    
-    
 
-    <p>Confira nossos <a asp-controller="Tiporestaurante" asp-action="Index">Tipos de Restaurante</a>.</p>
-    <p>Confira nossas <a asp-controller="Funcaofuncionario" asp-action="Index">Funções dos funcionarios</a>.</p>
-    <p>Confira nossos <a asp-controller="Grupocardapio" asp-action="Index">Grupos de Cardapio</a>.</p>
-    <p>Confira nossos <a asp-controller="Restaurante" asp-action="Index">Restaurantes</a>.</p>
+    <div class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+        <div>
+            <h1 class="display-4 fw-bold">Bem-vindo ao RestauranteWeb</h1>
+            <p class="lead">Sistema completo de gerenciamento para restaurantes</p>
+            <a class="btn btn-warning btn-lg mt-3" asp-controller="Atendimento" asp-action="Index">
+                Ver Atendimentos
+            </a>
+        </div>
+    </div>
 
+    <div class="container mt-5">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5>🍽 Mesas</h5>
+                    <p>Gerencie mesas disponíveis e ocupadas.</p>
+                    <a asp-controller="Mesa" asp-action="Index" class="btn btn-outline-dark">Acessar</a>
+                </div>
+            </div>
 
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5>📋 Cardápio</h5>
+                    <p>Gerencie itens e grupos de cardápio.</p>
+                    <a asp-controller="ItemCardapio" asp-action="Index" class="btn btn-outline-dark">Acessar</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5>👨‍🍳 Funcionários</h5>
+                    <p>Controle equipe e funções.</p>
+                    <a asp-controller="Funcionario" asp-action="Index" class="btn btn-outline-dark">Acessar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
