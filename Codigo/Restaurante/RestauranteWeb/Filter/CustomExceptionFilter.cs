@@ -1,4 +1,4 @@
-﻿using BibliotecaWeb.Models;
+﻿using RestauranteWeb.Models;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using MySql.Data.MySqlClient;
 
-namespace BibliotecaWeb.Filter
+namespace RestauranteWeb.Filter
 {
     public class CustomExceptionFilter : IExceptionFilter
     {
