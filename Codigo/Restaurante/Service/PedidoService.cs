@@ -1,5 +1,6 @@
 using Core;
 using Core.DTO;
+using Core.Service;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    public class PedidoService
+    public class PedidoService : IPedidoService
     {
         private readonly RestauranteContext _context;
         public PedidoService(RestauranteContext context)
