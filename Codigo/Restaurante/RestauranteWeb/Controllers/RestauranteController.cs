@@ -36,9 +36,9 @@ namespace RestauranteWeb.Controllers
             RestauranteViewModel restauranteViewModel = mapper.Map<RestauranteViewModel>(restaurante);
             return View(restauranteViewModel);
         }
-        
+
         // GET: RestauranteController/Create
-        [Authorize] //a seguinr adicona a autorizao para acessar as telas 
+        [Authorize]
         public ActionResult Create()
         {   
             RestauranteViewModel restauranteModel = new();
@@ -53,7 +53,7 @@ namespace RestauranteWeb.Controllers
         [Authorize]
         public ActionResult Create(RestauranteViewModel restauranteViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 
                 var restaurante = mapper.Map<Restaurante>(restauranteViewModel);
