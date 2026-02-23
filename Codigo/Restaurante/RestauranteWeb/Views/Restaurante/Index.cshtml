@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Core.DTO.RestauranteDTO>
 
-<link rel="stylesheet" type="text/css" href="~/lib/datatable/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/datatables/css/dataTables.bootstrap5.css" />
 @{
     ViewData["Title"] = "Index";
 }
@@ -47,7 +48,7 @@
         $(document).ready(function () {
             $('#tableRestaurante').DataTable({
                 language: {
-                    url: '/lib/datatable/js/pt-BR.json'
+                    url: '/lib/datatables/js/pt-BR.json'
                 }
                
             });
@@ -57,7 +58,8 @@
         
 
     </script>
-    <script src="~/lib/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap5.min.js"></script>
 }
 
 
