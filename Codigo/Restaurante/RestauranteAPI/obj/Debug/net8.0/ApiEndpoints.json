@@ -18,8 +18,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "restauranteViewModel",
-        "Type": "RestauranteWeb.Models.RestauranteViewModel",
+        "Name": "value",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -61,8 +61,8 @@
         "IsRequired": true
       },
       {
-        "Name": "restauranteViewModel",
-        "Type": "RestauranteWeb.Models.RestauranteViewModel",
+        "Name": "value",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

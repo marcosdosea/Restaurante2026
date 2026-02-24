@@ -2,7 +2,6 @@ using Core;
 using Core.Service;
 using Service;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using RestauranteWeb.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 

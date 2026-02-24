@@ -69,6 +69,9 @@ namespace RestauranteWeb.Controllers
         {
             var restaurante = restauranteService.Get(id);
             RestauranteViewModel restauranteViewModel = mapper.Map<RestauranteViewModel>(restaurante);
+
+            IEnumerable<Tiporestaurante> listatiposrestaurante = tiporestauranteService.GetAll();
+            restauranteViewModel.ListaTiposRestaurantes = new SelectList(listatiposrestaurante, "Id", "Nome", null);
             return View(restauranteViewModel);
         }
 

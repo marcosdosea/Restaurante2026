@@ -49,7 +49,8 @@ table a[href*="/Delete"] {
 }
 
 /* base comum */
-a[href*="/Edit"],
+a[rel*="/Edit"],
+table a[href*="/Edit"],
 table a[href*="/Details"],
 table a[href*="/Delete"] {
     display: inline-block;
@@ -74,3 +75,171 @@ table a[href*="/Delete"]:hover {
     background-color: #bb2d3b;
 }
 
+/* Remove sublinhado*/
+a.btn,
+a.btn:hover,
+a.btn:focus {
+    text-decoration: none !important;
+}
+
+/* ============================= */
+/* ESTILO GLOBAL TELAS DETAILS e DELETE */
+/* ============================= */
+
+.detalhe-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.detalhe-header {
+    background-color: #2c3e50; /* azul escuro elegante */
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 500;
+}
+
+.detalhe-list dt {
+    font-weight: 600;
+    color: #555;
+    margin-top: 10px;
+}
+
+.detalhe-list dd {
+    background-color: #f8f9fa;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.detalhe-footer {
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+    .detalhe-list dt {
+        margin-top: 15px;
+    }
+}
+
+/* ===============================
+   PADRÃO GLOBAL PARA CREATE/EDIT
+================================= */
+
+.page-form {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: var(--bs-body-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.page-form h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.page-form h4 {
+    font-size: 18px;
+    color: var(--bs-secondary-color);
+    margin-bottom: 20px;
+}
+
+.page-form hr {
+    margin-bottom: 25px;
+}
+
+.page-form .form-group {
+    margin-bottom: 20px;
+}
+
+.page-form label {
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.page-form .form-control {
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.page-form .btn-primary {
+    padding: 8px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.page-form a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   PADRÃO GLOBAL PARA INDEX/LIST
+================================= */
+
+.page-list {
+    margin: 40px auto;
+}
+
+.page-list h1 {
+font-size: 26px;
+font-weight: 600;
+margin-bottom: 20px;
+}
+
+/* Botão novo */
+.page-list .btn-primary {
+border-radius: 8px;
+padding: 6px 18px;
+font-weight: 500;
+}
+
+/* Tabela */
+.page-list table {
+background-color: #fff;
+border-radius: 10px;
+overflow: hidden;
+}
+
+/* Cabeçalho */
+.page-list table thead {
+    background-color: #2c3e50;
+    color: #fff;
+    height: 50px;
+}
+
+.page-list table thead th {
+    font-weight: 500;
+}
+
+/* Linhas */
+.page-list table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Links de ação */
+.page-list table td a {
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.page-list table td a:hover {
+    text-decoration: none;
+}
+
+/* DataTables ajustes */
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 6px;
+}

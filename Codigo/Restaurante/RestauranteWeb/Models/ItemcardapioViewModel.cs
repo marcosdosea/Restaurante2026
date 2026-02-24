@@ -1,4 +1,5 @@
 ﻿using Core;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace RestauranteWeb.Models
@@ -14,6 +15,7 @@ namespace RestauranteWeb.Models
         public string Nome { get; set; } = null!;
 
         [Display(Name = "Preço")]
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]
         public decimal? Preco { get; set; }
 
         [StringLength(200, ErrorMessage = "Detalhes deve ter até 200 caracteres")]
@@ -27,5 +29,13 @@ namespace RestauranteWeb.Models
 
         [Required(ErrorMessage = "Grupo de cardápio obrigatório")]
         public uint IdGrupoCardapio { get; set; }
+
+        public string Status => Ativo == 1 ? "Disponível" : "Indisponível";
+
+        [Display(Name = "Restaurante")]
+        public string NomeRestaurante { get; set; } = "";
+
+        public SelectList? ListaRestaurantes { get; set; }
+        public SelectList? ListaCardapios { get; set; }
     }
 }

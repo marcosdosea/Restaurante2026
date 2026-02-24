@@ -47,6 +47,7 @@ namespace Service
         /// <exception cref="ServiceException"></exception>
         public void Edit(Atendimento atendimento)
         {
+
             context.Update(atendimento);
             context.SaveChanges();
         }
@@ -70,6 +71,7 @@ namespace Service
 
             return context.Atendimentos.AsNoTracking().Select(a => new AtendimentoDTO
             {
+
                 Id = a.Id,
                 DataHoraInicio = a.DataHoraInicio,
                 IdMesa = a.IdMesa,

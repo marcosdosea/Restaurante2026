@@ -24,4 +24,6 @@ public partial class Itemcardapio
     public virtual Restaurante IdRestauranteNavigation { get; set; } = null!;
 
     public virtual ICollection<Pedidoitemcardapio> Pedidoitemcardapios { get; set; } = new List<Pedidoitemcardapio>();
+
+    public string NomeRestaurante => IdRestauranteNavigation.Nome;
 }
