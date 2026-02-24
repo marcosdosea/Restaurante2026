@@ -20,6 +20,11 @@ namespace Service
         /// <returns></returns>
         public uint Create(Atendimento atendimento)
         {
+            var mesa = context.Mesas.Find(atendimento.IdMesa);
+            if (mesa is not null)
+            {
+                atendimento.IdMesaNavigation = mesa;
+            }
             context.Atendimentos.Add(atendimento);
             context.SaveChanges();
             return atendimento.Id;
@@ -47,7 +52,11 @@ namespace Service
         /// <exception cref="ServiceException"></exception>
         public void Edit(Atendimento atendimento)
         {
-
+            var mesa = context.Mesas.Find(atendimento.IdMesa);
+            if (mesa is not null)
+            {
+                atendimento.IdMesaNavigation = mesa;
+            }
             context.Update(atendimento);
             context.SaveChanges();
         }
@@ -77,6 +86,20 @@ namespace Service
                 IdMesa = a.IdMesa,
                 Status = a.Status,
             });
+        }
+        public IEnumerable<AtendimentoDTO> GetByRestaurante(uint idRestaurante)
+        {
+            return context.Atendimentos
+                .Include(a => a.IdMesaNavigation)
+                .Where(a => a.IdMesaNavigation.IdRestaurante == idRestaurante)
+                .AsNoTracking()
+                .Select(a => new AtendimentoDTO
+                {
+                    Id = a.Id,
+                    DataHoraInicio = a.DataHoraInicio,
+                    IdMesa = a.IdMesa,
+                    Status = a.Status,
+                });
         }
     }
 }

@@ -40,5 +40,6 @@ namespace Core.DTO
 
         [Display(Name = "Código da Mesa")]
         public int IdMesa { get; set; }
+
     }
 }
