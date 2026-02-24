@@ -9821,23 +9821,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\João\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\gabri\\.nuget\\packages\\": {},
+    "D:\\Microsoft Visual Studio\\Compartilhados\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
       "projectName": "RestauranteAPI",
-      "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
-      "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\obj\\",
+      "projectPath": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
+      "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Microsoft Visual Studio\\Compartilhados\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -9846,21 +9846,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
+            "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
             },
-            "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
-              "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj"
+            "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj"
             },
-            "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
+            "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\gabri\\Desktop\\cs11\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
             }
           }
         }
@@ -9905,7 +9904,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
