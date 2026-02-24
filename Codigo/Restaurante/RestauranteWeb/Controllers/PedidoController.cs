@@ -102,6 +102,12 @@ namespace RestauranteWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                var atendimento = atendimentoService.Get(pedidoViewModel.IdAtendimento);
+                if (atendimento != null)
+                {
+                    pedidoViewModel.DaaHoraAtendimento = atendimento.DataHoraInicio ;
+                }
+                pedidoViewModel.DataHoraSolicitacao = DateTime.Now;
                 var pedido = mapper.Map<Core.Pedido>(pedidoViewModel);
                 pedidoService.Create(pedido);
             }
@@ -131,6 +137,11 @@ namespace RestauranteWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                var atendimento = atendimentoService.Get(pedidoViewModel.IdAtendimento);
+                if (atendimento != null)
+                {
+                    pedidoViewModel.DaaHoraAtendimento = atendimento.DataHoraInicio;
+                }
                 var pedido = mapper.Map<Core.Pedido>(pedidoViewModel);
                 pedidoService.Edit(pedido);
             }
