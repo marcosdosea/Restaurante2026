@@ -50,25 +50,15 @@ namespace RestauranteWeb.Controllers
 
         private SelectList ObterAtendimentos()
         {
-            IEnumerable<AtendimentoDTO> listaAtendimentos = atendimentoService.GetAll();
-            atendimentoService.GetAll().Where(a => a.Status == "I").ToList().ForEach(a =>
-            {
-                var mesaOcupada = listaAtendimentos.FirstOrDefault(m => m.Id == a.IdMesa);
-                if (mesaOcupada != null)
-                {
-                    listaAtendimentos = listaAtendimentos.Where(m => m.Id != mesaOcupada.Id);
-                }
-            });
-
-            return new SelectList(listaAtendimentos, "Id", "Identificacao", null);
+            IEnumerable<AtendimentoDTO> listaAtendimentos = atendimentoService.GetAll().Where(a => a.Status == "I").ToList();
+            return new SelectList(listaAtendimentos, "Id", "Id", null);
         }
 
 
         private SelectList ObterGarcons()
         {
             IEnumerable<FuncionarioDTO> listaGarcons = funcionarioService.GetAll();
-            funcionarioService.GetAll();
-            return new SelectList(listaGarcons, "Id", "Identificacao", null);
+            return new SelectList(listaGarcons, "Id", "Nome", null);
         }
 
         // GET: PedidoController
@@ -95,7 +85,6 @@ namespace RestauranteWeb.Controllers
         {
 
             PedidoViewModel pedidoViewModel= new PedidoViewModel();
-
 
             pedidoViewModel.ListaAtendimentos = ObterAtendimentos();
             pedidoViewModel.ListaGarcons = ObterGarcons();
