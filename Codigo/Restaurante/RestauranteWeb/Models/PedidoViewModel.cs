@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,5 +33,10 @@ namespace RestauranteWeb.Models
     [Display(Name = "Status do Pedido")]
     [Required(ErrorMessage = "O status do pedido é obrigatório")]
     public string Status { get; set; } = null!;
+
+
+    public SelectList? ListaGarcons { get; set; } = null!;
+
+    public SelectList? ListaAtendimentos { get; set; } = null!;
     }
 }
