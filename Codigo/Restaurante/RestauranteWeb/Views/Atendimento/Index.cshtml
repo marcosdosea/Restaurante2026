@@ -1,50 +1,79 @@
 ﻿@model IEnumerable<Core.DTO.AtendimentoDTO>
 
+<link rel="stylesheet" type="text/css" href="~/lib/datatables/css/dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/datatables/css/dataTables.bootstrap5.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/datatables/css/responsive.bootstrap5.min.css" />
 @{
     ViewData["Title"] = "Index";
 }
+<div class="card-header detalhe-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Atendimentos</h2>
+    <a asp-action="Create" class=" btn-primary">
+        Iniciar Atendimento
+    </a>
+</div>
+<div class="container page-list table-responsive border">
+    <table id="atendimentoTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataHoraInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusDescricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdMesa)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-<h1>Index</h1>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusDescricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdMesa)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                    </td>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DataHoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusDescricao)
-            </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+ </div>
 
-            <th>
-                @Html.DisplayNameFor(model => model.IdMesa)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.DataHoraInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusDescricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdMesa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-   
-        </tr>
+@section Scripts {
+    <script src="~/lib/datatables/js/dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.responsive.js"></script>
+    <script src="~/lib/datatables/js/responsive.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#atendimentoTable').DataTable({
+                responsive: true,
+                autoWidth: false,
+                columnDefs: [
+                    { targets: -1, orderable: false, searchable: false }
+                ],
+                columnDefs: [
+                    { targets: -1, orderable: false, searchable: false }
+                ],
+                language: {
+                    url: '/lib/datatables/js/pt-BR.json'
+                }
+            });
+        });
+    </script>
 }
-    </tbody>
-</table>

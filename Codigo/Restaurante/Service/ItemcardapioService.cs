@@ -20,6 +20,11 @@ namespace Service
         /// <returns> o ID do novo Itemcardapio criado </returns>
         public uint Create(Itemcardapio itemcardapio)
         {
+            var restaurante = context.Restaurantes.Find(itemcardapio.IdRestaurante);
+            if (restaurante is not null)
+            {
+                itemcardapio.IdRestauranteNavigation = restaurante;
+            }
             context.Itemcardapios.Add(itemcardapio);
             context.SaveChanges();
             return itemcardapio.Id;
@@ -44,6 +49,11 @@ namespace Service
         /// <param name="itemcardapio">Itemcardapio com as informações atualizadas</param>
         public void Edit(Itemcardapio itemcardapio)
         {
+            var restaurante = context.Restaurantes.Find(itemcardapio.IdRestaurante);
+            if (restaurante is not null)
+            {
+                itemcardapio.IdRestauranteNavigation = restaurante;
+            }
             context.Update(itemcardapio);
             context.SaveChanges();
         }
@@ -54,7 +64,9 @@ namespace Service
         /// <returns>Itemcardapio correspondente ao ID fornecido, ou null se não encontrado</returns>
         public Itemcardapio? Get(uint id)
         {
-            return context.Itemcardapios.Find(id);
+            return context.Itemcardapios
+                .Include(i => i.IdRestauranteNavigation)
+                .FirstOrDefault(i => i.Id == id);
         }
 
         /// <summary>
@@ -63,7 +75,9 @@ namespace Service
         /// <returns>Uma coleção de todas as Itemcardapios</returns>
         public IEnumerable<Itemcardapio> GetAll()
         {
-            return context.Itemcardapios.AsNoTracking();
+            return context.Itemcardapios
+                .Include(i => i.IdRestauranteNavigation)
+                .AsNoTracking();
         }
     }
 }

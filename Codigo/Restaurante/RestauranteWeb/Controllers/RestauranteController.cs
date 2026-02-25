@@ -36,9 +36,9 @@ namespace RestauranteWeb.Controllers
             RestauranteViewModel restauranteViewModel = mapper.Map<RestauranteViewModel>(restaurante);
             return View(restauranteViewModel);
         }
-        
+
         // GET: RestauranteController/Create
-        [Authorize] //a seguinr adicona a autorizao para acessar as telas 
+        [Authorize]
         public ActionResult Create()
         {   
             RestauranteViewModel restauranteModel = new();
@@ -53,7 +53,7 @@ namespace RestauranteWeb.Controllers
         [Authorize]
         public ActionResult Create(RestauranteViewModel restauranteViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 
                 var restaurante = mapper.Map<Restaurante>(restauranteViewModel);
@@ -69,6 +69,9 @@ namespace RestauranteWeb.Controllers
         {
             var restaurante = restauranteService.Get(id);
             RestauranteViewModel restauranteViewModel = mapper.Map<RestauranteViewModel>(restaurante);
+
+            IEnumerable<Tiporestaurante> listatiposrestaurante = tiporestauranteService.GetAll();
+            restauranteViewModel.ListaTiposRestaurantes = new SelectList(listatiposrestaurante, "Id", "Nome", null);
             return View(restauranteViewModel);
         }
 
@@ -98,7 +101,6 @@ namespace RestauranteWeb.Controllers
         // POST: RestauranteController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult Delete(RestauranteViewModel restauranteViewModel)
         {
             restauranteService.Delete(restauranteViewModel.Id);
