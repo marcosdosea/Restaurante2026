@@ -54,6 +54,12 @@ namespace RestauranteWeb.Controllers
             return View(listaAtendimentos);
         }
 
+        public ActionResult IndexAtendimentosRestaurante(uint IdRestaurante)
+        {
+            var listaAtendimentos = atendimentoService.GetByRestaurante(IdRestaurante);
+            return View(listaAtendimentos);
+        }
+
         // GET: AtendimentoController/Details
         public ActionResult Details(uint id)
         {

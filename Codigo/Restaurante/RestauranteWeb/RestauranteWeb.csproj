@@ -26,4 +26,9 @@
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\datatables\datatables-responsive\" />
+    <Folder Include="wwwroot\lib\datatables\datatables.net-responsive-bs5\" />
+  </ItemGroup>
+
 </Project>

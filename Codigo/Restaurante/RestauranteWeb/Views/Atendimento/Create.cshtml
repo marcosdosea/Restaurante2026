@@ -4,64 +4,45 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Atendimento</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="card-header detalhe-header">
+    <h2 class="mb-0">Cadastrar Atendimento</h2>
+</div>
+<div class="row page-form">
+    <div class="col-md-12">
+        <form asp-action="Create" class="row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DataHoraInicio" class="control-label"></label>
-                <input asp-for="DataHoraInicio" class="form-control" />
-                <span asp-validation-for="DataHoraInicio" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
+            <div class="form-group form-group col-12 col-md-6">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList">
                     <option value="">Selecione...</option>
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TotalConta" class="control-label"></label>
-                <input asp-for="TotalConta" class="form-control" />
-                <span asp-validation-for="TotalConta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalServico" class="control-label"></label>
-                <input asp-for="TotalServico" class="form-control" />
-                <span asp-validation-for="TotalServico" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalDesconto" class="control-label"></label>
-                <input asp-for="TotalDesconto" class="form-control" />
-                <span asp-validation-for="TotalDesconto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" />
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group form-group col-12 col-md-6">
                 <label asp-for="IdMesa" class="control-label"></label>
-                <select asp-for="IdMesa" class="form-control" asp-items="@Model.ListaMesas">
-                    <option value="">Selecione a mesa...</option>
-                </select>
+                    <select asp-for="IdMesa" class="form-control" asp-items="@Model.ListaMesas">
+                        @if(Model.ListaMesas == null || !Model.ListaMesas.Any())
+                        {
+                            <option value="">Mesas esgotadas</option>
+                        }
+                        else
+                        {
+                            <option value="">Selecione a mesa...</option>
+                        }
+                    </select>
                 <span asp-validation-for="IdMesa" class="text-danger"></span>
             </div>
 
             <div class="form-group" style="margin-top: 10px;">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary">
+                    Salvar
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    Voltar
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

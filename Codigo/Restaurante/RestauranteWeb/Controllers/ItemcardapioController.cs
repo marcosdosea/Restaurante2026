@@ -1,20 +1,48 @@
 ﻿using AutoMapper;
 using Core;
+using Core.DTO;
 using Core.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RestauranteWeb.Models;
+using Service;
 
 namespace RestauranteWeb.Controllers
 {
     public class ItemcardapioController : Controller
     {
+        private readonly IGrupocardapioService grupocardapioService;
+        private readonly IRestauranteService restauranteService;
         private readonly IItemcardapioService ItemcardapioService;
         private readonly IMapper mapper;
-        public ItemcardapioController(IItemcardapioService ItemcardapioService, IMapper mapper)
+        public ItemcardapioController(IItemcardapioService ItemcardapioService, IGrupocardapioService grupocardapioService, IRestauranteService restauranteService, IMapper mapper)
         {
             this.ItemcardapioService = ItemcardapioService;
+            this.grupocardapioService = grupocardapioService;
+            this.restauranteService = restauranteService;
             this.mapper = mapper;
         }
+
+        private void CarregarAtivo()
+        {
+            ViewBag.StatusList = new SelectList(new[]
+            {
+                new { Value = 1 , Text = "DISPONIVEL" },
+                new { Value = 0, Text = "INDISPONIVEL" },
+            }, "Value", "Text");
+        }
+        private SelectList ObterRestaurantes()
+        {
+            IEnumerable<RestauranteDTO> listaRestaurantes = restauranteService.GetAll();
+            return new SelectList(listaRestaurantes, "Id", "Nome", null);
+        }   
+
+        private SelectList ObterCardapios()
+        {
+            IEnumerable<GrupocardapioDTO> listaCardapios = grupocardapioService.GetAll();
+            return new SelectList(listaCardapios, "Id", "Nome", null);
+        }
+
         // GET: ItemcardapioController
         public ActionResult Index()
         {
@@ -28,13 +56,18 @@ namespace RestauranteWeb.Controllers
         {
             var itemcardapio = ItemcardapioService.Get(id);
             var itemcardapioViewModel = mapper.Map<ItemcardapioViewModel>(itemcardapio);
+            itemcardapioViewModel.NomeRestaurante = itemcardapio?.IdRestauranteNavigation.Nome ?? "Desconhecido";
             return View(itemcardapioViewModel);
         }
 
         // GET: ItemcardapioController/Create
         public ActionResult Create()
         {
-            return View();
+                ItemcardapioViewModel itemcardapioViewModel = new();
+                itemcardapioViewModel.ListaRestaurantes = ObterRestaurantes();
+                itemcardapioViewModel.ListaCardapios = ObterCardapios();
+                CarregarAtivo();
+            return View(itemcardapioViewModel);
         }
 
         // POST: ItemcardapioController/Create
@@ -42,8 +75,10 @@ namespace RestauranteWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ItemcardapioViewModel itemcardapioViewModel)
         {
+
             if (ModelState.IsValid)
             {
+               
                 var itemcardapio = mapper.Map<Itemcardapio>(itemcardapioViewModel);
                 ItemcardapioService.Create(itemcardapio);
                 
@@ -56,6 +91,9 @@ namespace RestauranteWeb.Controllers
         {
             var itemcardapio = ItemcardapioService.Get(id);
             var itemcardapioViewModel = mapper.Map<ItemcardapioViewModel>(itemcardapio);
+            itemcardapioViewModel.ListaRestaurantes = ObterRestaurantes();
+            itemcardapioViewModel.ListaCardapios = ObterCardapios();
+            CarregarAtivo();
             return View(itemcardapioViewModel);
         }
 
@@ -66,6 +104,7 @@ namespace RestauranteWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var itemcardapio = mapper.Map<Itemcardapio>(itemcardapioViewModel);
                 ItemcardapioService.Edit(itemcardapio);
             }

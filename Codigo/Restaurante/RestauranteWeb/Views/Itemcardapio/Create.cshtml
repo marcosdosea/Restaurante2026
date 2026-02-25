@@ -4,54 +4,59 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>ItemcardapioViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="card-header detalhe-header">
+    <h2 class="mb-0">Cadastrar Item do Cardápio</h2>
+</div>
+<div class="row page-form">
+    <div class="col-md-12">
+        <form asp-action="Create" class="row g-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
+            <div class="form-group col-12">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 col-md-6">
                 <label asp-for="Preco" class="control-label"></label>
-                <input asp-for="Preco" class="form-control" />
+                <input asp-for="Preco" type="number" class="form-control" />
                 <span asp-validation-for="Preco" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 col-md-6">
+                <label asp-for="Ativo" class="control-label"></label>
+                <select asp-for="Ativo" class="form-control" asp-items="ViewBag.StatusList">
+                    <option value="">Selecione o status...</option>
+                </select>
+                <span asp-validation-for="Ativo" class="text-danger"></span>
+            </div>
+            <div class="form-group col-12">
                 <label asp-for="Detalhes" class="control-label"></label>
                 <input asp-for="Detalhes" class="form-control" />
                 <span asp-validation-for="Detalhes" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Ativo" class="control-label"></label>
-                <input asp-for="Ativo" class="form-control" />
-                <span asp-validation-for="Ativo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group col-12 ">
                 <label asp-for="IdRestaurante" class="control-label"></label>
-                <input asp-for="IdRestaurante" class="form-control" />
+                <select asp-for="IdRestaurante" class="form-control" asp-items="@Model.ListaRestaurantes">
+                    <option value="">Selecione o restaurante...</option>
+                </select>
                 <span asp-validation-for="IdRestaurante" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-12">
                 <label asp-for="IdGrupoCardapio" class="control-label"></label>
-                <input asp-for="IdGrupoCardapio" class="form-control" />
+                <select asp-for="IdGrupoCardapio" class="form-control" asp-items="@Model.ListaCardapios">
+                    <option value="">Selecione o cardápio...</option>
+                </select>
                 <span asp-validation-for="IdGrupoCardapio" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group col-12 col-md-6">
+                <button type="submit" class="btn btn-primary">
+                    Salvar
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    Voltar
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
