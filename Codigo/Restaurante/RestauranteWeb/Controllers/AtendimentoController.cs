@@ -54,9 +54,9 @@ namespace RestauranteWeb.Controllers
             return View(listaAtendimentos);
         }
 
-        public ActionResult IndexRestaurante(uint IdRestaurante)
+        public ActionResult IndexAtendimentosRestaurante(uint IdRestaurante)
         {
-            var listaAtendimentos = atendimentoService.GetAll().Where(a => a.IdMesa == IdRestaurante);
+            var listaAtendimentos = atendimentoService.GetByRestaurante(IdRestaurante);
             return View(listaAtendimentos);
         }
 

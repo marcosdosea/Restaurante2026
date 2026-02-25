@@ -1,42 +1,145 @@
+/* =========================
+   BASE GLOBAL
+========================= */
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    margin-bottom: 60px;
+    color: #333;
 }
 
-/*estilo global para botoes de criar */
-a[href$="/Create"] {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #198754;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
+/* =========================
+   FOCUS BOOTSTRAP
+========================= */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar-custom {
+    background: linear-gradient(90deg, #1f2937, #111827);
+    padding: 14px 20px;
+}
+
+    .navbar-custom .navbar-brand {
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+    }
+
+    .navbar-custom .nav-link {
+        color: #e5e7eb !important;
+        font-weight: 500;
+        margin-right: 8px;
+        transition: 0.3s ease;
+    }
+
+        .navbar-custom .nav-link:hover {
+            color: #ffffff !important;
+            transform: translateY(-2px);
+        }
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.main-wrapper {
+    min-height: 85vh;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.content-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-custom {
+    background-color: #111827;
+    color: #d1d5db;
+    padding: 18px 0;
+    font-size: 14px;
+}
+
+/* =========================
+   BOTÕES GERAIS
+========================= */
+
+.btn {
+    border-radius: 8px;
     font-weight: 500;
 }
-a[href$="/Create"]:hover {
-    background-color: #157347;
+
+/* =========================
+   PADRÃO LINKS (SEM UNDERLINE)
+========================= */
+
+a {
+    text-decoration: none !important;
 }
 
-/* estilo base dos botoes na tabela inicial*/
-a[href*="/Edit"] {
+    /* =========================
+   BOTÃO CREATE GLOBAL
+========================= */
+
+    a[href$="/Create"] {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #198754;
+        color: #fff;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+
+        a[href$="/Create"]:hover {
+            background-color: #157347;
+        }
+
+/* =========================
+   BOTÕES DE AÇÃO TABELA
+========================= */
+
+table a[href*="/Edit"],
+table a[href*="/Details"],
+table a[href*="/IndexAtendimentosRestaurante"],
+table a[href*="/Delete"] {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    color: #fff;
+    margin-right: 4px;
+}
+
+/* Cores */
+table a[href*="/Edit"] {
     background-color: #0d6efd;
 }
 
@@ -44,26 +147,16 @@ table a[href*="/Details"] {
     background-color: #0dcaf0;
 }
 
+table a[href*="/IndexAtendimentosRestaurante"] {
+    background-color: darkblue;
+}
+
 table a[href*="/Delete"] {
     background-color: #dc3545;
 }
 
-/* base comum */
-a[rel*="/Edit"],
-table a[href*="/Edit"],
-table a[href*="/Details"],
-table a[href*="/Delete"] {
-    display: inline-block;
-    padding: 4px 10px;
-    font-size: 0.875rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #fff;
-    margin-right: 4px;
-}
-
-/* hover */
-a[href*="/Edit"]:hover {
+/* Hover */
+table a[href*="/Edit"]:hover {
     background-color: #0b5ed7;
 }
 
@@ -75,16 +168,37 @@ table a[href*="/Delete"]:hover {
     background-color: #bb2d3b;
 }
 
-/* Remove sublinhado*/
-a.btn,
-a.btn:hover,
-a.btn:focus {
-    text-decoration: none !important;
+/* =========================
+   TABELAS
+========================= */
+
+.table {
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* ============================= */
-/* ESTILO GLOBAL TELAS DETAILS e DELETE */
-/* ============================= */
+    .table thead {
+        background-color: #1f2937;
+        color: #ffffff;
+    }
+
+    .table th {
+        text-align: left;
+    }
+
+/* =========================
+   DATA TABLES AJUSTES
+========================= */
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+/* =========================
+   DETAILS / DELETE
+========================= */
 
 .detalhe-card {
     border: none;
@@ -93,7 +207,7 @@ a.btn:focus {
 }
 
 .detalhe-header {
-    background-color: #2c3e50; /* azul escuro elegante */
+    background-color: #2c3e50;
     color: #fff;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -119,16 +233,9 @@ a.btn:focus {
     border-bottom-right-radius: 10px;
 }
 
-/* Ajuste responsivo */
-@media (max-width: 768px) {
-    .detalhe-list dt {
-        margin-top: 15px;
-    }
-}
-
-/* ===============================
-   PADRÃO GLOBAL PARA CREATE/EDIT
-================================= */
+/* =========================
+   FORM CREATE / EDIT
+========================= */
 
 .page-form {
     max-width: 900px;
@@ -151,10 +258,6 @@ a.btn:focus {
     margin-bottom: 20px;
 }
 
-.page-form hr {
-    margin-bottom: 25px;
-}
-
 .page-form .form-group {
     margin-bottom: 20px;
 }
@@ -175,71 +278,27 @@ a.btn:focus {
     font-weight: 500;
 }
 
-.page-form a:hover {
-    text-decoration: underline;
-}
-
-/* ===============================
-   PADRÃO GLOBAL PARA INDEX/LIST
-================================= */
-
-.page-list {
-    margin: 40px auto;
-}
+/* =========================
+   INDEX / LIST
+========================= */
 
 .page-list h1 {
-font-size: 26px;
-font-weight: 600;
-margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-/* Botão novo */
-.page-list .btn-primary {
-border-radius: 8px;
-padding: 6px 18px;
-font-weight: 500;
-}
-
-/* Tabela */
 .page-list table {
-background-color: #fff;
-border-radius: 10px;
-overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-/* Cabeçalho */
 .page-list table thead {
     background-color: #2c3e50;
     color: #fff;
-    height: 50px;
 }
 
-.page-list table thead th {
-    font-weight: 500;
-}
-
-/* Linhas */
 .page-list table tbody tr:hover {
     background-color: #f2f2f2;
-}
-
-/* Links de ação */
-.page-list table td a {
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 8px;
-}
-
-.page-list table td a:hover {
-    text-decoration: none;
-}
-
-/* DataTables ajustes */
-.dataTables_wrapper .dataTables_filter input {
-    border-radius: 6px;
-    padding: 4px 8px;
-}
-
-.dataTables_wrapper .dataTables_length select {
-    border-radius: 6px;
 }

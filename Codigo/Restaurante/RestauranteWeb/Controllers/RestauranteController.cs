@@ -101,7 +101,6 @@ namespace RestauranteWeb.Controllers
         // POST: RestauranteController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult Delete(RestauranteViewModel restauranteViewModel)
         {
             restauranteService.Delete(restauranteViewModel.Id);

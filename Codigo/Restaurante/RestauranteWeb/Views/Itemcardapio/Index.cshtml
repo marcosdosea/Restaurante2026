@@ -5,13 +5,14 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="card-header detalhe-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Itens Cardápios</h2>
 
-<div class="container page-list table-responsive">
-
-    <h1>Itens Cardápios</h1>
-    <p>
-        <a asp-action="Create">Cadastrar Item Cardápio</a>
-    </p>
+    <a asp-action="Create" class=" btn-primary">
+        Cadastrar Item Cardápio
+    </a>
+</div>
+<div class="container page-list table-responsive border">
     <table id="itemcardapioTable" class="table table-striped table-bordered w-100">
         <thead>
             <tr>
@@ -51,6 +52,9 @@
             $('#itemcardapioTable').DataTable({
                 responsive: true,
                 autoWidth: false,
+                columnDefs: [
+                    { targets: -1, orderable: false, searchable: false }
+                ],
                 language: {
                     url: '/lib/datatables/js/pt-BR.json'
                 }

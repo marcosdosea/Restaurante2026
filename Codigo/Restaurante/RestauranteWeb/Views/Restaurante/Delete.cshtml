@@ -85,7 +85,9 @@
         </div>
 
         <div class="card-footer detalhe-footer">
-            @Html.ActionLink("Deletar", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger me-2" })
+            <form asp-action="Delete">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
             <a asp-action="Index" class="btn btn-secondary">Voltar</a>
         </div>
 
