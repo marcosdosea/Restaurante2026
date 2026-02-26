@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj": {}
+    "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
+    "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,29 +86,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj": {
+    "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
         "projectName": "RestauranteAPI",
-        "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\obj\\",
+        "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\RestauranteAPI.csproj",
+        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -118,21 +131,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
               },
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj"
               },
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
               }
             }
           }
@@ -169,6 +181,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-arm64",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -177,24 +207,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
+    "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj",
         "projectName": "RestauranteWeb",
-        "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\obj\\",
+        "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\RestauranteWeb.csproj",
+        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\RestauranteWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -203,18 +233,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
               },
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj"
               }
             }
           }
@@ -275,6 +304,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-arm64",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -283,24 +330,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
+    "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Service\\obj\\",
+        "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -309,15 +356,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\João\\Source\\Repos\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
+              "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Igor\\Desktop\\Restaurante2026\\Codigo\\Restaurante\\Core\\Core.csproj"
               }
             }
           }
@@ -360,12 +406,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.24, 8.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
