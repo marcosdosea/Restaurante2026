@@ -4,10 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Criar Novo Grupo</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="card-header detalhe-header">
+    <h2 class="mb-0">Cadastrar Grupo Cardápio</h2>
+</div>
+<div class="row page-form">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
@@ -15,10 +16,20 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            <div class="form-group" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary">
+                    Salvar
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    Voltar
+                </a>
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

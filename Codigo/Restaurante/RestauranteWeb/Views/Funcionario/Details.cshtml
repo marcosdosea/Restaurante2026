@@ -4,39 +4,51 @@
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>Detalhes</h1>
 
-<div>
-    <h4>Funcionário</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cpf)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cpf)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeRestaurante)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NomeRestaurante)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeFuncao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NomeFuncao)
-        </dd>
-    </dl>
+<div class="container">
+
+    <div class="card detalhe-card mt-4">
+
+        <div class="card-header detalhe-header">
+            <h2 class="mb-0">Detalhes da Mesa</h2>
+        </div>
+
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cpf)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Cpf)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.NomeRestaurante)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NomeRestaurante)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.NomeFuncao)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NomeFuncao)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="card-footer detalhe-footer">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary me-2" })
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+
+    </div>
+
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a> |
-    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
-</div>
+
