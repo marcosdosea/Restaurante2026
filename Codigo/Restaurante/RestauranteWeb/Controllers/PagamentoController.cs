@@ -42,10 +42,10 @@ namespace RestauranteWeb.Controllers
                 IdAtendimento = idAtendimento,
                 TotalAtendimento = atendimento.Total,
                 ValorFaltante = faltante,
-                Valor = faltante 
+                Valor = faltante
             };
 
-            ViewBag.IdFormaPagamento = new SelectList(_formaPagamentoService.GetAll(), "Id", "Nome"); 
+            ViewBag.IdFormaPagamento = new SelectList(_formaPagamentoService.GetAll(), "Id", "Nome");
             return View(viewModel);
         }
 
