@@ -12,6 +12,8 @@ namespace Core.Service
         void Delete(uint id);
         Atendimento? Get(uint id);
 
+        Atendimento? FinalizarAtendimento(uint idMesa);
+
         IEnumerable<AtendimentoDTO>GetAll();
 
         IEnumerable<AtendimentoDTO> GetByRestaurante(uint IdRestaurante);

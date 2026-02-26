@@ -43,11 +43,11 @@ namespace RestauranteWeb.Controllers
         // POST: MesaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MesaViewModel mesaViewModel)
         {
             if (ModelState.IsValid)
             {
-                var mesa = mapper.Map<Mesa>(collection);
+                var mesa = mapper.Map<Mesa>(mesaViewModel);
                 MesaService.Create(mesa);
             }
             return RedirectToAction(nameof(Index));
@@ -64,11 +64,11 @@ namespace RestauranteWeb.Controllers
         // POST: MesaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, MesaViewModel mesaViewModel)
         {
             if (ModelState.IsValid)
             {
-                var mesa = mapper.Map<Mesa>(collection);
+                var mesa = mapper.Map<Mesa>(mesaViewModel);
                 mesa.Id = id;
                 MesaService.Edit(mesa);
             }
@@ -86,7 +86,7 @@ namespace RestauranteWeb.Controllers
         // POST: MesaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, MesaViewModel mesaViewModel)
         {
             try
             {

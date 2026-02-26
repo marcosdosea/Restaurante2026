@@ -64,11 +64,6 @@ namespace RestauranteWeb.Controllers
         public ActionResult Details(uint id)
         {
             var atendimento = atendimentoService.Get(id);
-            if(atendimento != null)
-            {
-                atendimento.TotalConta = atendimento.Pedidos.Sum(p => p.Pedidoitemcardapios.Sum(pic => pic.Quantidade));
-                atendimento.Total = atendimento.TotalConta + atendimento.TotalServico - atendimento.TotalDesconto;
-            }
             AtendimentoViewModel atendimentoViewModel = mapper.Map<AtendimentoViewModel>(atendimento);
             return View(atendimentoViewModel);
         }
@@ -96,7 +91,7 @@ namespace RestauranteWeb.Controllers
             if (ModelState.IsValid)
             {
                 var atendimento = mapper.Map<Atendimento>(atendimentoViewModel);
-                atendimentoService.Create(atendimento);           
+                atendimentoService.Create(atendimento);
             }
 
             return RedirectToAction(nameof(Index));
@@ -114,7 +109,7 @@ namespace RestauranteWeb.Controllers
 
             return View(atendimentoViewModel);
         }
-        
+
         // POST: AtendimentoController/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -137,7 +132,7 @@ namespace RestauranteWeb.Controllers
         }
 
         // POST: AtendimentoController/Delete
-        [HttpPost]  
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(AtendimentoViewModel atendimentoViewModel)
         {
@@ -145,6 +140,30 @@ namespace RestauranteWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: AtendimentoController/FinalizarAtendimento/5
+        public ActionResult FinalizarAtendimento(uint id)
+        {
+            var atendimento = atendimentoService.Get(id);
+            if (atendimento == null)
+            {
+                return NotFound();
+            }
+            AtendimentoViewModel atendimentoViewModel = mapper.Map<AtendimentoViewModel>(atendimento);
+            return View(atendimentoViewModel);
+        }
 
+        // POST: AtendimentoController/FinalizarAtendimento/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FinalizarAtendimento(AtendimentoViewModel atendimentoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var atendimento = mapper.Map<Atendimento>(atendimentoViewModel);
+                atendimentoService.FinalizarAtendimento((uint)atendimento.IdMesa);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
