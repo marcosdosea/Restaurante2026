@@ -4,29 +4,36 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="container">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>FormapagamentoViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <div class="card detalhe-card mt-4">
+        <div class="card-header detalhe-header">
+            <h2 class="mb-0">Deletar Item do Cardápio</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="card-footer detalhe-footer">
+            <form asp-action="Delete">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+
+    </div>
+
 </div>

@@ -188,17 +188,13 @@ table a[href*="/Delete"]:hover {
 
 .table {
     border-radius: 8px;
-    overflow: hidden;
 }
 
-    .table thead {
-        background-color: #1f2937;
-        color: #ffffff;
-    }
+.table thead {
+    background-color: #1f2937;
+    color: #ffffff;
+}
 
-    .table th {
-        text-align: left;
-    }
 
 /* =========================
    DATA TABLES AJUSTES
@@ -305,7 +301,6 @@ table a[href*="/Delete"]:hover {
 .page-list table {
     background-color: #fff;
     border-radius: 10px;
-    overflow: hidden;
 }
 
 .page-list table thead {
