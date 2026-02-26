@@ -238,6 +238,14 @@ LOCK TABLES `aspnetusertokens` WRITE;
 /*!40000 ALTER TABLE `aspnetusertokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `aspnetusertokens` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'identityusers'
+--
+
+--
+-- Dumping routines for database 'identityusers'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -248,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-26  8:31:06
+-- Dump completed on 2026-02-26 18:23:25
