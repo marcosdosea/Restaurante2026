@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestauranteWeb.Models;
 
 namespace RestauranteWeb.Controllers
 {
+    [Authorize]
     public class FormapagamentoController : Controller
     {
 		private readonly IFormapagamentoService _formaPagamentoService;

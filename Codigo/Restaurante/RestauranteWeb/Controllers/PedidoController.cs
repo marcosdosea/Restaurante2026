@@ -2,6 +2,7 @@ using AutoMapper;
 using Core;
 using Core.DTO;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace RestauranteWeb.Controllers
 {
+    [Authorize]
     public class PedidoController : Controller
     {
         private readonly IPedidoService pedidoService;
