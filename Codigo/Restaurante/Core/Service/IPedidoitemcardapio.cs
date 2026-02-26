@@ -13,8 +13,8 @@ namespace Core.Service
             void Edit(Pedidoitemcardapio pedidoitemcardapio);
     
             void Delete(uint id);
-    
-            Pedidoitemcardapio? Get(uint id);
+
+            IEnumerable<Pedidoitemcardapio> Get(uint id);
     
             IEnumerable<Pedidoitemcardapio> GetAll();
     }
