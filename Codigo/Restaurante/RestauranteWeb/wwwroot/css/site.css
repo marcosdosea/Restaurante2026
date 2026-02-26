@@ -142,6 +142,7 @@ a {
 table a[href*="/Edit"],
 table a[href*="/Details"],
 table a[href*="/IndexAtendimentosRestaurante"],
+table a[href*="/FinalizarAtendimento"],
 table a[href*="/Delete"] {
     display: inline-block;
     padding: 4px 10px;
@@ -154,6 +155,10 @@ table a[href*="/Delete"] {
 /* Cores */
 table a[href*="/Edit"] {
     background-color: #0d6efd;
+}
+
+table a[href*="/FinalizarAtendimento"] {
+    background-color: #198754;
 }
 
 table a[href*="/Details"] {
@@ -171,6 +176,14 @@ table a[href*="/Delete"] {
 /* Hover */
 table a[href*="/Edit"]:hover {
     background-color: #0b5ed7;
+}
+
+table a[href*="/FinalizarAtendimento"]:hover {
+    background-color: #157347;
+}
+
+table a[href*="/IndexAtendimentosRestaurante"]:hover {
+    background-color: midnightblue;
 }
 
 table a[href*="/Details"]:hover {
@@ -312,4 +325,15 @@ table a[href*="/Delete"]:hover {
 }
 .navbar-nav {
     flex-wrap: wrap;
+}
+.navbar .nav-link {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.navbar .nav-link.btn,
+.navbar .nav-link[class*="btn"] {
+    background: none !important;
+    border: none !important;
 }

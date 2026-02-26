@@ -62,14 +62,18 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Tiporestaurante" asp-action="Index">Tipo Restaurante</a>
+                            <a class="nav-link" asp-controller="Tiporestaurante" asp-action="Index">Categorias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Formapagamento" asp-action="Index">Formas de pagamento</a>
+                            <a class="nav-link" asp-controller="Formapagamento" asp-action="Index">Formas</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Pagamento" asp-action="Create">Pagamentos</a>
+                        </li>
+                        <partial name="_LoginPartial" />
                     </ul>
 
-                    <partial name="_LoginPartial" />
+                    
 
                 </div>
             </div>
