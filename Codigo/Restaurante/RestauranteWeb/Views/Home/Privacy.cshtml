@@ -1,6 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Política de Privacidade";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="content-container">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        Esta aplicação coleta apenas as informações necessárias para o funcionamento do sistema,
+        como dados de cadastro, registros de atendimentos e informações administrativas.
+    </p>
+
+    <p>
+        Os dados são utilizados exclusivamente para gestão interna, controle operacional
+        e geração de relatórios. Não realizamos compartilhamento de informações com terceiros,
+        exceto quando exigido por lei.
+    </p>
+
+    <p>
+        Adotamos medidas de segurança adequadas para proteger as informações armazenadas
+        contra acesso não autorizado, alteração ou divulgação indevida.
+    </p>
+
+    <p class="text-muted">
+        Última atualização: @DateTime.Now.ToString("dd/MM/yyyy")
+    </p>
+</div>
