@@ -2,8 +2,10 @@
 using Core.Service;
 using AutoMapper;
 using RestauranteWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 namespace RestauranteWeb.Controllers
 {
+    [Authorize]
     public class TiporestauranteController : Controller
     {
 
