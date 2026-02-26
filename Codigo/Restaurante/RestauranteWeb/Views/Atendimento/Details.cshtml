@@ -79,8 +79,10 @@
             </dl>
         </div>
 
+
         <div class="card-footer detalhe-footer">
             @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary me-2" })
+            <a asp-controller="Pagamento" asp-action="Create" asp-route-idAtendimento="@Model.Id" class="btn btn-success me-2">Pagar Conta</a>
             <a asp-action="Index" class="btn btn-secondary">Voltar</a>
         </div>
 

@@ -84,6 +84,7 @@ namespace RestauranteWeb
             builder.Services.AddTransient<IFuncionarioService, FuncionarioService>();
             builder.Services.AddTransient<IAtendimentoService, AtendimentoService>();
             builder.Services.AddTransient<IPedidoService, PedidoService>();
+            builder.Services.AddTransient<IPagamentoService, PagamentoService>();
 
             builder.Services.AddDistributedMemoryCache();
 
