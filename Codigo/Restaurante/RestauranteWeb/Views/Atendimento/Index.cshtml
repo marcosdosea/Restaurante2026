@@ -25,7 +25,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.IdMesa)
                 </th>
-                <th></th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -64,9 +64,6 @@
             $('#atendimentoTable').DataTable({
                 responsive: true,
                 autoWidth: false,
-                columnDefs: [
-                    { targets: -1, orderable: false, searchable: false }
-                ],
                 columnDefs: [
                     { targets: -1, orderable: false, searchable: false }
                 ],
