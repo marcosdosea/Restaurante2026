@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>FormapagamentoViewModel</h4>
+<div class="card-header detalhe-header">
+    <h2 class="mb-0">Cadastrar Forma de Pagamento</h2>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
+          
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
