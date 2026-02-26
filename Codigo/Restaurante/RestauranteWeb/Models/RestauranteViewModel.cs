@@ -16,6 +16,7 @@ namespace RestauranteWeb.Models
         [Required(ErrorMessage = "Codigo do tipo de restaurante obrigatorio")]
         public uint IdTipoRestaurante { get; set; }
 
+        [CNPJ]
         [Required(ErrorMessage = "campo obrigatorio")]
         public string Cnpj { get; set; } = null!;
 
@@ -37,11 +38,14 @@ namespace RestauranteWeb.Models
 
         [StringLength(2, ErrorMessage = "Estado deve ter até 2 caracteres")]
         public string? Estado { get; set; }
-
+        [TelefoneCelular]
         [StringLength(14, ErrorMessage = "Número deve ter até 14 caracteres")]
+        [Display(Name = "Número de celular 1")]
         public string? Telefone1 { get; set; }
 
+        [TelefoneCelular]
         [StringLength(14, ErrorMessage = "Número deve ter até 14 caracteres")]
+        [Display(Name = "Número de celular 2")]
         public string? Telefone2 { get; set; }
 
         public SelectList? ListaTiposRestaurantes { get; set; }

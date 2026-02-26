@@ -18,8 +18,8 @@ body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background-color: #f4f6f9;
     margin: 0;
-    margin-bottom: 60px;
     color: #333;
+
 }
 
 /**/
@@ -79,7 +79,6 @@ body {
 ========================= */
 
 .main-wrapper {
-    min-height: 85vh;
     padding-top: 30px;
     padding-bottom: 40px;
 }
@@ -310,4 +309,7 @@ table a[href*="/Delete"]:hover {
 
 .page-list table tbody tr:hover {
     background-color: #f2f2f2;
+}
+.navbar-nav {
+    flex-wrap: wrap;
 }
