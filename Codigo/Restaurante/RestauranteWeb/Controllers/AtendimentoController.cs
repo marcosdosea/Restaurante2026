@@ -144,10 +144,6 @@ namespace RestauranteWeb.Controllers
         public ActionResult FinalizarAtendimento(uint id)
         {
             var atendimento = atendimentoService.Get(id);
-            if (atendimento == null)
-            {
-                return NotFound();
-            }
             AtendimentoViewModel atendimentoViewModel = mapper.Map<AtendimentoViewModel>(atendimento);
             return View(atendimentoViewModel);
         }
