@@ -1,65 +1,110 @@
 ﻿@{
-    ViewData["Title"] = "Sistema de Restaurante";
+    ViewData["Title"] = "Sistema RestauranteWeb";
 }
 
 <div class="container mt-5">
+
     <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold">Sistema de Gerenciamento de Restaurante</h1>
-        <p class="lead text-muted">
-            Plataforma para controle de restaurantes, mesas, atendimentos e pedidos.
+        <h1 class="display-4 fw-bold">
+            Sistema de Gerenciamento de Restaurantes
+        </h1>
+
+        <p class="lead text-muted mt-3">
+            Plataforma completa para administração, controle operacional
+            e gestão estratégica de restaurantes.
         </p>
+
+        <div class="mt-4">
+            <a asp-area="Identity"
+               asp-page="/Account/Login"
+               class="btn btn-primary btn-lg me-3">
+                Login
+            </a>
+
+            <a asp-area="Identity"
+               asp-page="/Account/Register"
+               class="btn btn-outline-primary btn-lg">
+                Registrar-se
+            </a>
+        </div>
     </div>
 
     <div class="row text-center">
 
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Restaurantes</h5>
-                    <p class="card-text">Cadastro e gerenciamento de restaurantes.</p>
-                    <a asp-controller="Restaurante" asp-action="Index" class="btn btn-outline-primary btn-sm">
-                        Acessar
-                    </a>
+                    <h5 class="fw-bold">Gestão de Restaurantes</h5>
+                    <p>
+                        Cadastro completo de restaurantes com controle
+                        de dados administrativos, estrutura física e organização operacional.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Mesas</h5>
-                    <p class="card-text">Controle das mesas disponíveis.</p>
-                    <a asp-controller="Mesa" asp-action="Index" class="btn btn-outline-primary btn-sm">
-                        Acessar
-                    </a>
+                    <h5 class="fw-bold">Controle de Mesas</h5>
+                    <p>
+                        Gerenciamento das mesas disponíveis, ocupadas ou
+                        reservadas, garantindo melhor organização do atendimento.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-4">
+        <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Atendimentos</h5>
-                    <p class="card-text">Gerenciamento dos atendimentos realizados.</p>
-                    <a asp-controller="Atendimento" asp-action="Index" class="btn btn-outline-primary btn-sm">
-                        Acessar
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Pedidos</h5>
-                    <p class="card-text">Registro e acompanhamento dos pedidos.</p>
-                    <a asp-controller="Pedido" asp-action="Index" class="btn btn-outline-primary btn-sm">
-                        Acessar
-                    </a>
+                    <h5 class="fw-bold">Atendimentos e Pedidos</h5>
+                    <p>
+                        Registro detalhado de atendimentos realizados,
+                        controle de pedidos vinculados e histórico completo das operações.
+                    </p>
                 </div>
             </div>
         </div>
 
     </div>
+    <div class="row text-center">
 
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">Segurança e Controle de Acesso</h5>
+                    <p>
+                        Sistema com autenticação de usuários,
+                        garantindo proteção das informações e controle de permissões.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">Gestão de Funcionários</h5>
+                    <p>
+                        Cadastro de funcionários, definição de funções,
+                        organização e controle das atividades exercidas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">Centralização de Dados</h5>
+                    <p>
+                        Todas as informações organizadas em uma única plataforma,
+                        facilitando o gerenciamento e aumentando a produtividade.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

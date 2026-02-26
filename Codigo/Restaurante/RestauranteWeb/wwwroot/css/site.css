@@ -22,6 +22,20 @@ body {
     color: #333;
 }
 
+/**/
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper {
+    flex: 1;
+}
+
 /* =========================
    FOCUS BOOTSTRAP
 ========================= */

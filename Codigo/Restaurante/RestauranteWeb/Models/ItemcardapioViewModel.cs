@@ -25,9 +25,11 @@ namespace RestauranteWeb.Models
         public sbyte Ativo { get; set; }
 
         [Required(ErrorMessage = "Restaurante associado obrigatório")]
+        [Display(Name = "Restaurante")]
         public uint IdRestaurante { get; set; }
 
         [Required(ErrorMessage = "Grupo de cardápio obrigatório")]
+        [Display(Name = "Cardápio")]
         public uint IdGrupoCardapio { get; set; }
 
         public string Status => Ativo == 1 ? "Disponível" : "Indisponível";
