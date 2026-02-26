@@ -2,6 +2,7 @@
 using Core;
 using Core.DTO;
 using Core.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestauranteWeb.Models;
@@ -9,6 +10,7 @@ using Service;
 
 namespace RestauranteWeb.Controllers
 {
+    [Authorize]
     public class ItemcardapioController : Controller
     {
         private readonly IGrupocardapioService grupocardapioService;
